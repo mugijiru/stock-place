@@ -10,6 +10,7 @@ jobs:
         image: postgres:11.5
         ports: ["5432:5432"]
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
     - uses: actions/checkout@v1
     - uses: masa-iwasaki/setup-rbenv@v1
@@ -20,6 +21,29 @@ jobs:
       with:
         path: /home/runner/.rbenv
         key: ${{ runner.os }}-rbenv
+
+    - name: Cache Gemfiles
+      uses: actions/cache@v1
+      id: cache_gemfiles
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+
+
+    - name: Get yarn cache
+      id: get_yarn_cache
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+
+    - name: Cache yarn
+      uses: actions/cache@v1
+      id: cache_yarn
+      with:
+        path: ${{ steps.get_yarn_cache.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
 
     - name: Set up rbenv
       run: |
@@ -38,9 +62,11 @@ jobs:
       run: |
         eval "$(rbenv init -)"
         gem install bundler
+        bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
         yarn
+
     - name: Run Tests
       env:
         PGHOST: localhost
