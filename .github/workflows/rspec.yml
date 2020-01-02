@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -13,19 +12,24 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@v1
-    - name: Set up Ruby 2.6
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
+    - uses: masa-iwasaki/setup-rbenv@v1
+
+    - name: Set up rbenv
+      run: |
+        eval "$(rbenv init -)"
+        rbenv install -s `cat .ruby-version`
+
     - name: Install PostgreSQL 11 Library
       run: |
         sudo apt-get -yqq install libpq-dev
+
     - name: Setup Rails
       env:
         PGHOST: localhost
         PGUSER: postgres
         RAILS_ENV: test
       run: |
+        eval "$(rbenv init -)"
         gem install bundler
         bundle install --jobs 4 --retry 3
         bin/rails db:setup
@@ -35,4 +39,5 @@ jobs:
         PGUSER: postgres
         RAILS_ENV: test
       run: |
+        eval "$(rbenv init -)"
         bundle exec rspec
