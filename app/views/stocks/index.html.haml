@@ -1,2 +1,9 @@
-%h1 Stocks#index
-%p Find me in app/views/stocks/index.html.haml
+%h2 Stocks
+
+%table
+  %tr
+    %th 名称
+    %th 住所
+  - @places.each do |place|
+    %td= place.name
+    %td= place.address
