@@ -1,0 +1,51 @@
+name: RSpec
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:11.5
+        ports: ["5432:5432"]
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    steps:
+    - uses: actions/checkout@v1
+    - uses: masa-iwasaki/setup-rbenv@v1
+
+    - name: Cache RBENV_ROOT
+      uses: actions/cache@v1
+      id: cache_rbenv
+      with:
+        path: /home/runner/.rbenv
+        key: ${{ runner.os }}-rbenv
+
+    - name: Set up rbenv
+      run: |
+        eval "$(rbenv init -)"
+        rbenv install -s `cat .ruby-version`
+
+    - name: Install PostgreSQL 11 Library
+      run: |
+        sudo apt-get -yqq install libpq-dev
+
+    - name: Setup Rails
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: |
+        eval "$(rbenv init -)"
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bin/rails db:setup
+        yarn
+    - name: Run Tests
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        RAILS_ENV: test
+      run: |
+        eval "$(rbenv init -)"
+        bundle exec rspec
