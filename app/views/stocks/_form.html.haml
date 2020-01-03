@@ -1,0 +1,16 @@
+= form_with model: @place, url: @place.new_record? ? stocks_path : stock_path(@place) do |f|
+  - if @place.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@place.errors.count, "error")} prohibited this stock from being saved:"
+      %ul
+        - @place.errors.full_messages.each do |msg|
+          %li= msg
+  = f.label :name do
+    名称
+    = f.text_field :name
+  = f.label :address do
+    住所
+    = f.text_field :address
+
+  .actions
+    = f.submit 'Save'
