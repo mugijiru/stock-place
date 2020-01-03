@@ -12,5 +12,15 @@
     住所
     = f.text_field :address
 
+  = f.label :visited_on do
+    訪問日
+    = f.date_field :visited_on
+  %fieldset
+    %legend リピートあり?
+    - PlaceEvaluation.point.values.each do |value|
+      = label_tag do
+        = f.radio_button(:point, value)
+        = t("enumerize.place_evaluation.point.#{value}")
+
   .actions
     = f.submit 'Save'
