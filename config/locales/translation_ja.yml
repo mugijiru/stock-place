@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      place: 場所  #g
+      place_evaluation: 場所の評価  #g
+      place_item: アイテムを配置する  #g
+
+    attributes:
+      place:
+        address: 住所  #g
+        evaluations: 評価  #g
+        name: 名前  #g
+
+      place_evaluation:
+        place: :activerecord.models.place  #g
+        point: ポイント  #g
+        visited_on: 訪問しました  #g
+
+      place_item:
+        name: 名前  #g
+        place: :activerecord.models.place  #g
+        price: 価格  #g
