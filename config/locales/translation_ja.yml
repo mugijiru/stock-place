@@ -1,25 +1,25 @@
 ja:
   activerecord:
     models:
-      place: 場所  #g
-      place_evaluation: 場所の評価  #g
-      place_item: アイテムを配置する  #g
+      place: 場所
+      place_evaluation: 訪問評価
+      place_item: 商品
 
     attributes:
       place:
-        address: 住所  #g
-        evaluations: 評価  #g
-        name: 名前  #g
+        address: 住所
+        evaluations: 評価
+        name: 名称
 
       place_evaluation:
-        place: :activerecord.models.place  #g
-        point: ポイント  #g
-        visited_on: 訪問しました  #g
+        place: :activerecord.models.place
+        point: ポイント
+        visited_on: 訪問日
 
       place_item:
-        name: 名前  #g
-        place: :activerecord.models.place  #g
-        price: 価格  #g
+        name: 商品名
+        place: :activerecord.models.place
+        price: 価格
 
   enumerize:
     place_evaluation:
