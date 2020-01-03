@@ -34,26 +34,6 @@ RSpec.describe 'Stocks', type: :request do
     end
   end
 
-  describe 'PUT /stocks/:id' do
-    it 'ストックした場所を更新できる' do
-      create_params = place_params.merge(name: 'おいしいラーメン屋')
-      place = create(:place, create_params)
-
-      params = { place: place_params.merge(name: 'おいしい中華料理屋') }
-      put stock_path(place), params: params
-
-      aggregate_failures do
-        expect(response).to have_http_status(:found)
-
-        follow_redirect!
-
-        expect(response).to have_http_status(:success)
-        expect(response.body).not_to include('ラーメン屋')
-        expect(response.body).to include('中華料理屋')
-      end
-    end
-  end
-
   describe 'DELETE /stocks/:id' do
     it 'ストックした場所を削除できる' do
       create_params = place_params.merge(name: 'おいしいラーメン屋')

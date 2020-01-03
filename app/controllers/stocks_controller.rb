@@ -18,10 +18,6 @@ class StocksController < ApplicationController
     @place_evaluation = @place.evaluations.build
   end
 
-  # GET /stocks/1/edit
-  def edit
-  end
-
   # POST /stocks
   # POST /stocks.json
   def create
@@ -34,20 +30,6 @@ class StocksController < ApplicationController
         format.json { render :show, status: :created, location: stock_path(@place.id) }
       else
         format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /stocks/1
-  # PATCH/PUT /stocks/1.json
-  def update
-    respond_to do |format|
-      if @place.update(place_params)
-        format.html { redirect_to stock_path(@place), notice: 'Place was successfully updated.' }
-        format.json { render :show, status: :ok, location: stock_path(@place.id) }
-      else
-        format.html { render :edit }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
