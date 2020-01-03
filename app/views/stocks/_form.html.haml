@@ -6,23 +6,26 @@
         - @place.errors.full_messages.each do |msg|
           %li= msg
 
-  %section
-    %h3 場所
+  %section.p-form-section.p-form-section--2-columns
+    %h3.p-form-section__title 場所
     = f.fields_for :place, @place do |place_f|
-      = place_f.label :name, class: 'c-label' do
-        %span.c-label__text 名称
-        = place_f.text_field :name, class: 'c-input'
-      = place_f.label :address, class: 'c-label' do
-        %span.c-label__text 住所
-        = place_f.text_field :address, class: 'c-input'
+      %p.p-form-section__input-group
+        = place_f.label :name, class: 'c-label' do
+          %span.c-label__text 名称
+          = place_f.text_field :name, class: 'c-input'
+      %p.p-form-section__input-group
+        = place_f.label :address, class: 'c-label' do
+          %span.c-label__text 住所
+          = place_f.text_field :address, class: 'c-input'
 
-  %section
-    %h3 訪問記録
+  %section.p-form-section.p-form-section--2-columns
+    %h3.p-form-section__title 訪問記録
     = f.fields_for :place_evaluation, @place_evaluation do |evaluation_f|
-      = evaluation_f.label :visited_on, class: 'c-label' do
-        %span.c-label__text 訪問日
-        = evaluation_f.date_field :visited_on, class: 'c-input'
-      %fieldset.p-fieldset
+      %p.p-form-section__input-group
+        = evaluation_f.label :visited_on, class: 'c-label' do
+          %span.c-label__text 訪問日
+          = evaluation_f.date_field :visited_on, class: 'c-input'
+      %fieldset.p-form-section__input-group.p-fieldset
         %legend.p-fieldset__legend リピートあり?
         %ul.p-fieldset__list
           - PlaceEvaluation.point.values.each do |value|
