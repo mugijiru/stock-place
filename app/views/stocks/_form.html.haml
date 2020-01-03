@@ -22,11 +22,11 @@
       = evaluation_f.label :visited_on, class: 'c-label' do
         %span.c-label__text 訪問日
         = evaluation_f.date_field :visited_on, class: 'c-input'
-      %fieldset
-        %legend リピートあり?
-        %ul
+      %fieldset.p-fieldset
+        %legend.p-fieldset__legend リピートあり?
+        %ul.p-fieldset__list
           - PlaceEvaluation.point.values.each do |value|
-            %li
+            %li.p-fieldset__list-item
               = label_tag do
                 = evaluation_f.radio_button(:point, value)
                 = t("enumerize.place_evaluation.point.#{value}")
