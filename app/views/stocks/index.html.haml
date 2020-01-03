@@ -13,13 +13,11 @@
       %th 住所
       %th
       %th
-      %th
     - @places.each do |place|
       %tr
         %td= place.name
         %td= place.address
         %td= link_to 'Show', stock_path(place)
-        %td= link_to 'Edit', edit_stock_path(place)
         %td= link_to 'Destroy', stock_path(place), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 = link_to 'New Stock', new_stock_path

@@ -15,17 +15,14 @@ class StocksController < ApplicationController
   # GET /stocks/new
   def new
     @place = Place.new
-  end
-
-  # GET /stocks/1/edit
-  def edit
+    @place_evaluation = @place.evaluations.build
   end
 
   # POST /stocks
   # POST /stocks.json
   def create
     @place = Place.new(place_params)
-    @place.evaluations.build(place_evaluation_params)
+    @place_evaluation = @place.evaluations.build(place_evaluation_params)
 
     respond_to do |format|
       if @place.save
@@ -33,20 +30,6 @@ class StocksController < ApplicationController
         format.json { render :show, status: :created, location: stock_path(@place.id) }
       else
         format.html { render :new }
-        format.json { render json: @place.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /stocks/1
-  # PATCH/PUT /stocks/1.json
-  def update
-    respond_to do |format|
-      if @place.update(place_params)
-        format.html { redirect_to stock_path(@place), notice: 'Place was successfully updated.' }
-        format.json { render :show, status: :ok, location: stock_path(@place.id) }
-      else
-        format.html { render :edit }
         format.json { render json: @place.errors, status: :unprocessable_entity }
       end
     end
@@ -70,10 +53,10 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :address)
+      params.fetch(:stock, {}).require(:place).permit(:name, :address)
     end
 
     def place_evaluation_params
-      params.require(:place_evaluation).permit(:visited_on, :point)
+      params.fetch(:stock, {}).require(:place_evaluation).permit(:visited_on, :point)
     end
 end
