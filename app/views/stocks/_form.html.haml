@@ -24,10 +24,12 @@
         = evaluation_f.date_field :visited_on, class: 'c-input'
       %fieldset
         %legend リピートあり?
-        - PlaceEvaluation.point.values.each do |value|
-          = label_tag do
-            = evaluation_f.radio_button(:point, value)
-            = t("enumerize.place_evaluation.point.#{value}")
+        %ul
+          - PlaceEvaluation.point.values.each do |value|
+            %li
+              = label_tag do
+                = evaluation_f.radio_button(:point, value)
+                = t("enumerize.place_evaluation.point.#{value}")
 
   .p-button-group
     = link_to 'Back', stocks_path, class: 'c-button'
