@@ -1,0 +1,8 @@
+ja:
+  enumerize:
+    place_evaluation:
+      point:
+        bad: なし
+        no_comment: 未訪問/ノーコメント
+        not_bad: たまになら
+        good: あり
