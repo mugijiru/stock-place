@@ -18,6 +18,6 @@
         %td= place.name
         %td= place.address
         %td= link_to 'Show', stock_path(place), class: 'c-button'
-        %td= link_to 'Destroy', stock_path(place), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'c-button'
+        %td= link_to 'Destroy', stock_path(place), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'c-button c-button--danger'
 
 = link_to 'New Stock', new_stock_path
