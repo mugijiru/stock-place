@@ -8,15 +8,15 @@
   = f.fields_for :place, @place do |place_f|
     = place_f.label :name do
       名称
-      = place_f.text_field :name
+      = place_f.text_field :name, class: 'c-input'
     = place_f.label :address do
       住所
-      = place_f.text_field :address
+      = place_f.text_field :address, class: 'c-input'
 
   = f.fields_for :place_evaluation, @place_evaluation do |evaluation_f|
     = evaluation_f.label :visited_on do
       訪問日
-      = evaluation_f.date_field :visited_on
+      = evaluation_f.date_field :visited_on, class: 'c-input'
     %fieldset
       %legend リピートあり?
       - PlaceEvaluation.point.values.each do |value|
