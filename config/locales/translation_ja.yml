@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      place: 場所
+      place_evaluation: 訪問評価
+      place_item: 商品
+
+    attributes:
+      place:
+        address: 住所
+        evaluations: 評価
+        name: 名称
+
+      place_evaluation:
+        place: :activerecord.models.place
+        point: ポイント
+        visited_on: 訪問日
+
+      place_item:
+        name: 商品名
+        place: :activerecord.models.place
+        price: 価格
+
+  enumerize:
+    place_evaluation:
+      point:
+        bad: なし
+        no_comment: 未訪問/ノーコメント
+        not_bad: たまになら
+        good: あり
