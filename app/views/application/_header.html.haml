@@ -1,0 +1,6 @@
+%header.header{ class: class_name }
+  %h1.header__application-name StockPlace
+  %nav.header__nav
+    %ul.header__nav-list
+      %li.header__nav-item= link_to 'Stocks', stocks_path
+  = link_to 'Stock!', new_stock_path, class: 'header__new-stock'

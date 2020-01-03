@@ -1,0 +1,16 @@
+.application {
+  display: grid;
+  grid-template:
+    "       header             header             header       " 50px
+    "         .                  .                  .          " 20px
+    "         .                content              .          " minmax(calc(100vh - 70px), auto)
+    / minmax(20px, auto) minmax(600px, auto) minmax(20px, auto);
+}
+
+.application__header {
+  grid-area: header;
+}
+
+.application__content {
+  grid-area: content;
+}
