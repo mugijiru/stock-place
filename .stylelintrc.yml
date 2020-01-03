@@ -1,0 +1,21 @@
+extends:
+  - "stylelint-config-recess-order"
+rules:
+  block-no-empty: true
+  color-hex-case: 'lower'
+  color-no-invalid-hex: true
+  number-leading-zero: 'never'
+  number-no-trailing-zeros: true                                 # 小数点以下の末尾0を禁止
+  unit-case: 'lower'                                             # 単位は小文字指定（大文字を禁止）
+  property-case: 'lower'                                         # プロパティは小文字指定（大文字を禁止）
+  declaration-block-semicolon-newline-after: 'always-multi-line' # セミコロン後に改行が必須（セレクタ含め一行の場合は容認）
+  declaration-block-semicolon-newline-before: 'never-multi-line' # セミコロン前の空白・改行を禁止
+  declaration-block-trailing-semicolon: 'always'                 # 末尾のセミコロンを必須
+  block-closing-brace-empty-line-before: 'never'                 # 閉じ括弧前の空行を禁止
+  block-closing-brace-newline-after: 'always'                    # 閉じ括弧後の改行を必須
+  selector-max-empty-lines: 1                                    # セレクタ内の隣接する空行の数を制限
+  selector-pseudo-class-case: 'lower'                            # 擬似セレクタは小文字指定（大文字は禁止）
+  max-empty-lines: 2                                             # 隣接する空行を制限
+  no-extra-semicolons: true                                      # 余分なセミコロンを禁止
+  no-missing-end-of-source-newline: true                         # 行末の改行を必須
+  indentation: 2                                                 # インデントを 2 にする
