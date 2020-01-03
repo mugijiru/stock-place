@@ -1,10 +1,13 @@
-.c-label {
+.c-radio-label {
   display: grid;
+  grid-template-columns: auto auto;
   grid-gap: 5px;
   align-items: center;
 
+  &__radio-button {
+  }
+
   &__text {
-    display: block;
     font-size: 14px;
   }
 }

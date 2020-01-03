@@ -1,29 +1,39 @@
-= form_with scope: :stock, url: stocks_path, local: true do |f|
+= form_with scope: :stock, url: stocks_path, local: true, class: 'p-form' do |f|
   - if @place.errors.any?
     #error_explanation
       %h2= "#{pluralize(@place.errors.count, "error")} prohibited this stock from being saved:"
       %ul
         - @place.errors.full_messages.each do |msg|
           %li= msg
-  = f.fields_for :place, @place do |place_f|
-    = place_f.label :name, class: 'c-label' do
-      .c-label__text 名称
-      = place_f.text_field :name, class: 'c-input'
-    = place_f.label :address, class: 'c-label' do
-      .c-label__text 住所
-      = place_f.text_field :address, class: 'c-input'
 
-  = f.fields_for :place_evaluation, @place_evaluation do |evaluation_f|
-    = evaluation_f.label :visited_on, class: 'c-label' do
-      .c-label__text 訪問日
-      = evaluation_f.date_field :visited_on, class: 'c-input'
-    %fieldset
-      %legend リピートあり?
-      - PlaceEvaluation.point.values.each do |value|
-        = label_tag do
-          = evaluation_f.radio_button(:point, value)
-          = t("enumerize.place_evaluation.point.#{value}")
+  %section.p-form-section.p-form-section--2-columns
+    %h3.p-form-section__title 場所
+    = f.fields_for :place, @place do |place_f|
+      %p.p-form-section__input-group
+        = place_f.label :name, class: 'c-label' do
+          %span.c-label__text 名称
+          = place_f.text_field :name, class: 'c-input'
+      %p.p-form-section__input-group
+        = place_f.label :address, class: 'c-label' do
+          %span.c-label__text 住所
+          = place_f.text_field :address, class: 'c-input'
 
-  .p-button-group
+  %section.p-form-section.p-form-section--2-columns
+    %h3.p-form-section__title 訪問記録
+    = f.fields_for :place_evaluation, @place_evaluation do |evaluation_f|
+      %p.p-form-section__input-group
+        = evaluation_f.label :visited_on, class: 'c-label' do
+          %span.c-label__text 訪問日
+          = evaluation_f.date_field :visited_on, class: 'c-input'
+      %fieldset.p-form-section__input-group.p-fieldset
+        %legend.p-fieldset__legend リピートあり?
+        %ul.p-fieldset__list
+          - PlaceEvaluation.point.values.each do |value|
+            %li.p-fieldset__list-item
+              = label_tag nil, class: 'c-radio-label' do
+                = evaluation_f.radio_button(:point, value, class: 'c-radio-label__radio-button')
+                %span.c-radio-label__text= t("enumerize.place_evaluation.point.#{value}")
+
+  %section.p-button-group
     = link_to 'Back', stocks_path, class: 'c-button'
     = f.submit 'Save', class: 'c-button c-button--primary'
