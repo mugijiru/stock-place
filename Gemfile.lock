@@ -102,6 +102,9 @@ GEM
       railties (>= 4.0.1)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
+    i18n_generators (2.2.2)
+      activerecord (>= 3.0.0)
+      railties (>= 3.0.0)
     io-console (0.5.4)
     irb (1.1.0)
       reline (>= 0.0.1)
@@ -288,6 +291,7 @@ DEPENDENCIES
   enumerize
   factory_bot_rails
   hamlit-rails
+  i18n_generators
   jbuilder (~> 2.7)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
