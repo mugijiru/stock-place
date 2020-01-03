@@ -11,10 +11,10 @@ RSpec.describe 'Stocks', type: :request do
   end
 
   describe 'POST /stocks' do
-    it '場所と評価ををストックできる' do
+    it '場所と評価を同時にストックできる' do
       params = {
         place: place_params.merge(address: 'test 1-1-1'),
-        place_evaluation: place_evaluation_params.merge(visited_on: Date.today)
+        place_evaluation: place_evaluation_params.merge(visited_on: Date.today, point: -2)
       }
       post stocks_path, params: params
 
@@ -25,6 +25,8 @@ RSpec.describe 'Stocks', type: :request do
 
         expect(response).to have_http_status(:success)
         expect(response.body).to include('test 1-1-1')
+        expect(response.body).to include(Date.today.to_s(:db)) # TODO: I18n
+        expect(response.body).to include('二度と来ない')
       end
     end
   end
