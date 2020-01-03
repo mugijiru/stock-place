@@ -27,9 +27,9 @@
         %ul.p-fieldset__list
           - PlaceEvaluation.point.values.each do |value|
             %li.p-fieldset__list-item
-              = label_tag do
-                = evaluation_f.radio_button(:point, value)
-                = t("enumerize.place_evaluation.point.#{value}")
+              = label_tag nil, class: 'c-radio-label' do
+                = evaluation_f.radio_button(:point, value, class: 'c-radio-label__radio-button')
+                %span.c-radio-label__text= t("enumerize.place_evaluation.point.#{value}")
 
   %section.p-button-group
     = link_to 'Back', stocks_path, class: 'c-button'
