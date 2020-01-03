@@ -1,0 +1,9 @@
+.c-label {
+  display: grid;
+  grid-gap: 5px;
+  align-items: center;
+
+  &__text {
+    font-size: 14px;
+  }
+}
