@@ -1,0 +1,11 @@
+%p#notice= notice
+
+%dl
+  %dt 名称
+  %dd= @place.name
+  %dt 住所
+  %dd= @place.address
+
+= link_to 'Edit', edit_stock_path(@place)
+\|
+= link_to 'Back', stocks_path
