@@ -2,7 +2,6 @@
 
 .header {
   position: fixed;
-  min-width: 100vw;
   display: grid;
   grid-template:
     "  .     .   .    .   .    .    .  " 5px
@@ -10,6 +9,7 @@
     "  .     .   .    .   .    .    .  " 5px
     / 20px auto 1fr auto 20px auto 20px;
   align-items: center;
+  min-width: 100vw;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
 
