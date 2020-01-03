@@ -1,3 +1,5 @@
+@import 'objects/components/button';
+
 .header {
   position: fixed;
   min-width: 100vw;
@@ -27,16 +29,5 @@
 
   &__new-stock {
     grid-area: btn;
-    display: block;
-    padding: 5px 20px;
-    color: #fff;
-    text-decoration: none;
-    background-color: #000;
-    border-radius: 3px;
-    transition: .3s;
-
-    &:hover {
-      opacity: .8;
-    }
   }
 }

@@ -1,0 +1,13 @@
+.c-button {
+  display: block;
+  padding: 5px 20px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #000;
+  border-radius: 3px;
+  transition: .3s;
+
+  &:hover {
+    opacity: .8;
+  }
+}
