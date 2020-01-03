@@ -10,17 +10,17 @@
     %h3 場所
     = f.fields_for :place, @place do |place_f|
       = place_f.label :name, class: 'c-label' do
-        .c-label__text 名称
+        %span.c-label__text 名称
         = place_f.text_field :name, class: 'c-input'
       = place_f.label :address, class: 'c-label' do
-        .c-label__text 住所
+        %span.c-label__text 住所
         = place_f.text_field :address, class: 'c-input'
 
   %section
     %h3 訪問記録
     = f.fields_for :place_evaluation, @place_evaluation do |evaluation_f|
       = evaluation_f.label :visited_on, class: 'c-label' do
-        .c-label__text 訪問日
+        %span.c-label__text 訪問日
         = evaluation_f.date_field :visited_on, class: 'c-input'
       %fieldset
         %legend リピートあり?
@@ -31,6 +31,6 @@
                 = evaluation_f.radio_button(:point, value)
                 = t("enumerize.place_evaluation.point.#{value}")
 
-  .p-button-group
+  %section.p-button-group
     = link_to 'Back', stocks_path, class: 'c-button'
     = f.submit 'Save', class: 'c-button c-button--primary'
