@@ -18,7 +18,7 @@ RSpec.describe "Stocks", type: :system do
 
     click_on 'Save' # TODO: I18n
 
-    expect(page).to have_text('Successfly') # TODO: I18n
+    expect(page).to have_text('successfully') # TODO: I18n
     expect(page).to have_text('Stock')
     expect(page).to have_text('M78星雲')
   end

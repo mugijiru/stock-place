@@ -1,26 +1,28 @@
-= form_with model: @place, url: @place.new_record? ? stocks_path : stock_path(@place) do |f|
+= form_with scope: :stock, url: @place.new_record? ? stocks_path : stock_path(@place) do |f|
   - if @place.errors.any?
     #error_explanation
       %h2= "#{pluralize(@place.errors.count, "error")} prohibited this stock from being saved:"
       %ul
         - @place.errors.full_messages.each do |msg|
           %li= msg
-  = f.label :name do
-    名称
-    = f.text_field :name
-  = f.label :address do
-    住所
-    = f.text_field :address
+  = f.fields_for :place, @place do |place_f|
+    = place_f.label :name do
+      名称
+      = place_f.text_field :name
+    = place_f.label :address do
+      住所
+      = place_f.text_field :address
 
-  = f.label :visited_on do
-    訪問日
-    = f.date_field :visited_on
-  %fieldset
-    %legend リピートあり?
-    - PlaceEvaluation.point.values.each do |value|
-      = label_tag do
-        = f.radio_button(:point, value)
-        = t("enumerize.place_evaluation.point.#{value}")
+  = f.fields_for :place_evaluation, @place_evaluation do |evaluation_f|
+    = evaluation_f.label :visited_on do
+      訪問日
+      = evaluation_f.date_field :visited_on
+    %fieldset
+      %legend リピートあり?
+      - PlaceEvaluation.point.values.each do |value|
+        = label_tag do
+          = evaluation_f.radio_button(:point, value)
+          = t("enumerize.place_evaluation.point.#{value}")
 
   .actions
     = f.submit 'Save'

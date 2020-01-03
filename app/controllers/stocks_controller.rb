@@ -15,6 +15,7 @@ class StocksController < ApplicationController
   # GET /stocks/new
   def new
     @place = Place.new
+    @place_evaluation = @place.evaluations.build
   end
 
   # GET /stocks/1/edit
@@ -25,7 +26,7 @@ class StocksController < ApplicationController
   # POST /stocks.json
   def create
     @place = Place.new(place_params)
-    @place.evaluations.build(place_evaluation_params)
+    @place_evaluation = @place.evaluations.build(place_evaluation_params)
 
     respond_to do |format|
       if @place.save
