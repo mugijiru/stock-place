@@ -43,7 +43,7 @@ RSpec.describe 'Stocks', type: :system do
         expect(page).not_to have_text('successfully') # TODO: I18n
         expect(page).to have_text('New stock')
         expect(page).to have_text('名称を入力してください')
-        expect(page).to have_text('宇宙の彼方')
+        expect(page).to have_field('住所', with: '宇宙の彼方')
       end
     end
   end
