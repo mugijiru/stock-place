@@ -1,0 +1,41 @@
+.header {
+  position: fixed;
+  min-width: 100vw;
+  display: grid;
+  grid-template:
+    "  .     .   .    .   .    .    .  " 5px
+    "  .   name  .   nav  .   btn   .  " auto
+    "  .     .   .    .   .    .    .  " 5px
+    / 20px auto 1fr auto 20px auto 20px;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
+
+  &__application-name {
+    grid-area: name;
+    font-size: 20px;
+  }
+
+  &__nav {
+    grid-area: nav;
+  }
+
+  &__nav-list {
+    list-style-type: none;
+  }
+
+  &__new-stock {
+    grid-area: btn;
+    display: block;
+    padding: 5px 20px;
+    color: #fff;
+    text-decoration: none;
+    background-color: #000;
+    border-radius: 3px;
+    transition: .3s;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
