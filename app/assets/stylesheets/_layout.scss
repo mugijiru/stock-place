@@ -4,7 +4,7 @@
     "       header             header             header       " 50px
     "         .                  .                  .          " 20px
     "         .                content              .          " minmax(calc(100vh - 70px), auto)
-    / minmax(20px, auto) minmax(600px, auto) minmax(20px, auto);
+    / minmax(20px, 1fr) minmax(600px, auto) minmax(20px, 1fr);
 }
 
 .application__header {
