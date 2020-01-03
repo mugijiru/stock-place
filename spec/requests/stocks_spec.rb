@@ -13,8 +13,10 @@ RSpec.describe 'Stocks', type: :request do
   describe 'POST /stocks' do
     it '場所と評価を同時にストックできる' do
       params = {
-        place: place_params.merge(address: 'test 1-1-1'),
-        place_evaluation: place_evaluation_params.merge(visited_on: Date.today, point: :not_bad)
+        stock: {
+          place: place_params.merge(address: 'test 1-1-1'),
+          place_evaluation: place_evaluation_params.merge(visited_on: Date.today, point: :not_bad)
+        }
       }
       post stocks_path, params: params
 

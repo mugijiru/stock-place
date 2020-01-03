@@ -70,10 +70,10 @@ class StocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
-      params.require(:place).permit(:name, :address)
+      params.fetch(:stock, {}).require(:place).permit(:name, :address)
     end
 
     def place_evaluation_params
-      params.require(:place_evaluation).permit(:visited_on, :point)
+      params.fetch(:stock, {}).require(:place_evaluation).permit(:visited_on, :point)
     end
 end
