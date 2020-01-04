@@ -6,4 +6,4 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   Coveralls::SimpleCov::Formatter
 ])
 
-SimpleCov.start
+SimpleCov.start 'rails'
