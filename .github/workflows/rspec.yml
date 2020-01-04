@@ -76,6 +76,11 @@ jobs:
         eval "$(rbenv init -)"
         bundle exec rspec
 
+    - name: Coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Upload coverage results
       uses: actions/upload-artifact@v1
       if: always()
