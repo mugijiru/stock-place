@@ -1,15 +1,10 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  before_action :set_stock, only: [:edit, :update, :destroy]
 
   # GET /stocks
   # GET /stocks.json
   def index
     @places = Place.order(id: :desc).all
-  end
-
-  # GET /stocks/1
-  # GET /stocks/1.json
-  def show
   end
 
   # GET /stocks/new
@@ -26,8 +21,8 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to stock_path(@place), notice: 'Place was successfully created.' }
-        format.json { render :show, status: :created, location: stock_path(@place.id) }
+        format.html { redirect_to place_path(@place), notice: 'Place was successfully created.' }
+        format.json { render :show, status: :created, location: place_path(@place.id) }
       else
         format.html { render :new }
         format.json { render json: @place.errors, status: :unprocessable_entity }
