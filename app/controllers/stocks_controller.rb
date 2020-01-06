@@ -1,15 +1,8 @@
 class StocksController < ApplicationController
-  before_action :set_stock, only: [:show, :edit, :update, :destroy]
-
   # GET /stocks
   # GET /stocks.json
   def index
     @places = Place.order(id: :desc).all
-  end
-
-  # GET /stocks/1
-  # GET /stocks/1.json
-  def show
   end
 
   # GET /stocks/new
@@ -26,8 +19,8 @@ class StocksController < ApplicationController
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to stock_path(@place), notice: 'Place was successfully created.' }
-        format.json { render :show, status: :created, location: stock_path(@place.id) }
+        format.html { redirect_to place_path(@place), notice: 'Place was successfully created.' }
+        format.json { render :show, status: :created, location: place_path(@place.id) }
       else
         format.html { render :new }
         format.json { render json: @place.errors, status: :unprocessable_entity }
@@ -38,6 +31,7 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
+    @place = Place.find(params[:id])
     @place.destroy
     respond_to do |format|
       format.html { redirect_to stocks_url, notice: 'Place was successfully destroyed.' }
@@ -46,11 +40,6 @@ class StocksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stock
-      @place = Place.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
       params.fetch(:stock, {}).require(:place).permit(:name, :address)

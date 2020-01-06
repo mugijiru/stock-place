@@ -1,16 +1,16 @@
+%h2= @place.name
+
 %p#notice= notice
 
 %dl
-  %dt 名称
-  %dd= @place.name
   %dt 住所
   %dd= @place.address
 
 %h3 訪問記録
-- @place.evaluations.each do |evaluation|
+- @place_evaluations.each do |evaluation|
   %dl
     %dt 訪問日
-    %dd= evaluation.visited_on
+    %dd= l(evaluation.visited_on)
     %dt リピートあり?
     %dd= evaluation.point_text
 

@@ -10,10 +10,6 @@ RSpec.describe StocksController, type: :routing do
       expect(:get => "/stocks/new").to route_to("stocks#new")
     end
 
-    it "routes to #show" do
-      expect(:get => "/stocks/1").to route_to("stocks#show", :id => "1")
-    end
-
     it "routes to #create" do
       expect(:post => "/stocks").to route_to("stocks#create")
     end

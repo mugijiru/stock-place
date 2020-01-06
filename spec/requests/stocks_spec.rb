@@ -28,7 +28,7 @@ RSpec.describe 'Stocks', type: :request do
         expect(response).to have_http_status(:success)
         expect(response.body).not_to include('New stock')
         expect(response.body).to include('test 1-1-1')
-        expect(response.body).to include(Date.yesterday.to_s(:db)) # TODO: I18n
+        expect(response.body).to include(Date.yesterday.strftime('%Y/%m/%d'))
         expect(response.body).to include('たまになら')
       end
     end
