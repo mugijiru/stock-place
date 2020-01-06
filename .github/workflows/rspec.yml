@@ -84,3 +84,19 @@ jobs:
       with:
         name: coverage-report
         path: coverage
+
+    - name: Notify slack successfully build
+      uses: rtCamp/action-slack-notify@master
+      if: success()
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: Build success
+        SLACK_MESSAGE: ":+1:"
+
+    - name: Notify slack failure build
+      uses: rtCamp/action-slack-notify@master
+      if: failure()
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_TITLE: Build failed
+        SLACK_MESSAGE: ":-1:"
