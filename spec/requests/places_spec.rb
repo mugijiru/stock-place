@@ -25,11 +25,15 @@ RSpec.describe 'Places', type: :request do
     it '場所情報が更新できる' do
       place = create(:place, name: 'for update', address: 'foo')
       put "/places/#{place.id}", params: { place: { name: 'updated_name', address: 'bar' } }
-      expect(response).to have_http_status(:ok)
-      expect(response.body).not_to include('for update')
-      expect(response.body).not_to include('foo')
-      expect(response.body).to include('updated_name')
-      expect(response.body).to include('bar')
+      aggregate_failures do
+        expect(response).to have_http_status(:found)
+        follow_redirect!
+
+        expect(response.body).not_to include('for update')
+        expect(response.body).not_to include('foo')
+        expect(response.body).to include('updated_name')
+        expect(response.body).to include('bar')
+      end
     end
   end
 end
