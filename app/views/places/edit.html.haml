@@ -1,0 +1,24 @@
+%h2 #{@place.name} の情報修正
+
+= form_with model: @place, local: true, class: 'p-form' do |f|
+  - if @place.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@place.errors.count, "error")} prohibited this stock from being saved:"
+      %ul
+        - @place.errors.full_messages.each do |msg|
+          %li= msg
+
+  %section.p-form-section.p-form-section--2-columns
+    %h3.p-form-section__title 場所
+    %p.p-form-section__input-group
+      = f.label :name, class: 'c-label' do
+        %span.c-label__text 名称
+        = f.text_field :name, class: 'c-input'
+    %p.p-form-section__input-group
+      = f.label :address, class: 'c-label' do
+        %span.c-label__text 住所
+        = f.text_field :address, class: 'c-input'
+
+  %section.p-button-group
+    = link_to 'Back', place_path(@place), class: 'c-button'
+    = f.submit 'Save', class: 'c-button c-button--primary'

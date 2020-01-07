@@ -14,4 +14,6 @@
     %dt リピートあり?
     %dd= evaluation.point_text
 
-= link_to 'Back', stocks_path
+%ul
+  %li= link_to 'Back', stocks_path
+  %li= link_to '編集', edit_place_path(@place)
