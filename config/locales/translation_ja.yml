@@ -24,7 +24,7 @@ ja:
   enumerize:
     place_evaluation:
       point:
-        no_good: なし
+        no_good: もう行かない
         no_comment: 未訪問/ノーコメント
         not_bad: たまになら
-        good: あり
+        good: また行きたい

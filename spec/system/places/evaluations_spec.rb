@@ -10,9 +10,9 @@ RSpec.describe "Places::Evaluations", type: :system do
       it '評価が登録できる' do
         place = create(:place, name: 'test_place')
         visit "/places/#{place.id}"
-        click_on('評価を追加')
+        click_on('訪問記録を追加')
         fill_in '訪問日', with: '2020/01/01'
-        choose 'あり'
+        choose 'また行きたい'
         click_on('Save')
         expect(page).to have_content('successfully')
         expect(page).to have_content('test_place')
