@@ -8,7 +8,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
     -# ページ固有の CSS を読み込む
-    = stylesheet_link_tag controller_name, media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag controller_path, media: 'all', 'data-turbolinks-track': 'reload'
 
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body.application
