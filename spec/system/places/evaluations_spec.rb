@@ -44,4 +44,25 @@ RSpec.describe "Places::Evaluations", type: :system do
       end
     end
   end
+
+  describe '評価の削除' do
+    context '入力が正しければ' do
+      it '評価を削除できる' do
+        place = create(:place, name: 'test_place')
+        evaluation = create(:place_evaluation, place: place, visited_on: '2020/01/01', point: :good)
+        visit "/places/#{place.id}"
+
+        within('.place-evaluation:first-of-type') do
+          accept_confirm('本当に削除してもよろしいですか?') do
+            click_on('削除する')
+          end
+        end
+
+        expect(page).to have_content('訪問記録を削除しました')
+        expect(page).to have_content('test_place')
+        expect(page).not_to have_content('また行きたい')
+        expect(page).not_to have_content('2020/01/01')
+      end
+    end
+  end
 end
