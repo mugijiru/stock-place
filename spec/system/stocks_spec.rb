@@ -16,7 +16,7 @@ RSpec.describe 'Stocks', type: :system do
         fill_in '住所', with: '宇宙の彼方'
 
         fill_in '訪問日', with: '2020/01/01'
-        choose 'あり'
+        choose 'また行きたい'
 
         click_on 'Save' # TODO: I18n
 
@@ -36,7 +36,7 @@ RSpec.describe 'Stocks', type: :system do
         fill_in '住所', with: '宇宙の彼方'
 
         fill_in '訪問日', with: '2020/01/01'
-        choose 'あり'
+        choose 'また行きたい'
 
         click_on 'Save' # TODO: I18n
 
