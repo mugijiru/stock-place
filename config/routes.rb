@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   resources :stocks, only: %i[index new create destroy]
   resources :places, only: %i[show edit update] do
-    resources :evaluations, only: %i[new create edit update], controller: 'places/evaluations'
+    resources :evaluations, only: %i[new create edit update destroy], controller: 'places/evaluations'
   end
 end
