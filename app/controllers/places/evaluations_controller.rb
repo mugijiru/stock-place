@@ -15,6 +15,11 @@ class Places::EvaluationsController < ApplicationController
     end
   end
 
+  def edit
+    @place = Place.find(params[:place_id])
+    @evaluation = @place.evaluations.find(params[:id])
+  end
+
   def update
     @place = Place.find(params[:place_id])
     @evaluation = @place.evaluations.find(params[:id])

@@ -8,11 +8,14 @@
 
 %h3 訪問記録
 - @place_evaluations.each do |evaluation|
-  %dl
-    %dt 訪問日
-    %dd= l(evaluation.visited_on)
-    %dt リピートあり?
-    %dd= evaluation.point_text
+  %section.place-evaluation
+    %dl
+      %dt 訪問日
+      %dd= l(evaluation.visited_on)
+      %dt リピートあり?
+      %dd= evaluation.point_text
+
+    = link_to '修正する', edit_place_evaluation_path(@place, evaluation)
 
 = link_to '訪問記録を追加', new_place_evaluation_path(@place)
 

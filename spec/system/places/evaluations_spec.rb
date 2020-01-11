@@ -26,10 +26,10 @@ RSpec.describe "Places::Evaluations", type: :system do
     context '入力が正しければ' do
       it '評価を修正できる' do
         place = create(:place, name: 'test_place')
-        evaluation = create(:place_evaluation, place: place, visited_on: Date.yesterday, point: :bad)
+        evaluation = create(:place_evaluation, place: place, visited_on: Date.yesterday, point: :no_good)
         visit "/places/#{place.id}"
 
-        within('.place-evaluation:first-child') do
+        within('.place-evaluation:first-of-type') do
           click_on('修正する')
         end
 
