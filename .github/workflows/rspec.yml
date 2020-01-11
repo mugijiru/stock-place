@@ -15,6 +15,9 @@ jobs:
     - uses: actions/checkout@v1
     - uses: masa-iwasaki/setup-rbenv@v1
 
+    - uses: actions/checkout@master
+    - uses: nanasess/setup-chromedriver@master
+
     - name: Cache RBENV_ROOT
       uses: actions/cache@v1
       id: cache_rbenv
@@ -73,6 +76,7 @@ jobs:
         PGUSER: postgres
         RAILS_ENV: test
         CI: true
+        DISPLAY: ':99'
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       run: |
         eval "$(rbenv init -)"
