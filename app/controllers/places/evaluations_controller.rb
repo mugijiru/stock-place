@@ -18,6 +18,6 @@ class Places::EvaluationsController < ApplicationController
   private
 
   def evaluation_params
-    params.require(:evaluation).permit(:visited_on, :point)
+    params.require(:place_evaluation).permit(:visited_on, :point)
   end
 end
