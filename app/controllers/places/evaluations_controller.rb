@@ -15,6 +15,17 @@ class Places::EvaluationsController < ApplicationController
     end
   end
 
+  def update
+    @place = Place.find(params[:place_id])
+    @evaluation = @place.evaluations.find(params[:id])
+
+    if @evaluation.update(evaluation_params)
+      redirect_to place_path(@place), notice: 'Evaluation was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def evaluation_params
