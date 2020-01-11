@@ -31,6 +31,16 @@ class Places::EvaluationsController < ApplicationController
     end
   end
 
+  def destroy
+    @place = Place.find(params[:place_id])
+    @evaluation = @place.evaluations.find(params[:id])
+    if @evaluation.destroy
+      redirect_to place_path(@place), notice: '訪問記録を削除しました'
+    else
+      redirect_to place_path(@place), alert: '訪問記録の削除に失敗しました'
+    end
+  end
+
   private
 
   def evaluation_params

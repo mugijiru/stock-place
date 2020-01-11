@@ -49,7 +49,7 @@ RSpec.describe "Places::Evaluations", type: :system do
         visit "/places/#{place.id}"
 
         within('.place-evaluation:first-of-type') do
-          accept_confirm('本当に削除してもよろしいですか?') do
+          accept_confirm('本当に削除しますか?') do
             click_on('削除する')
           end
         end
