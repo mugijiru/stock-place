@@ -1,0 +1,20 @@
+.p-section-card {
+  display: grid;
+  grid-template:
+    " .    .    . " 30px
+    " . header  . " auto
+    " .    .    . " 20px
+    " . content . " auto
+    " .    .    . " 20px
+    / 40px auto 40px;
+  background-color: #fff;
+  border-radius: 5px;
+
+  &__header {
+    grid-area: header;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+}

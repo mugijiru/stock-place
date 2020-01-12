@@ -1,22 +1,22 @@
 %section.p-place-show
-  %section.p-place-show__section
+  %section.p-section-card
     - if notice.present?
       %p#notice= notice
 
-    .p-place-show__section-header
+    .p-section-card__header.p-place-show__section-header
       %h2.p-place-show__section-title= @place.name
       = link_to '編集', edit_place_path(@place), class: 'p-place-show__section-button c-button'
 
-    %dl.p-place-show__section-content
+    %dl.p-section-card__content
       %dt 住所
       %dd= @place.address
 
-  %section.p-place-show__section
-    .p-place-show__section-header
+  %section.p-section-card
+    .p-section-card__header.p-place-show__section-header
       %h3.p-place-show__section-title 訪問記録
       = link_to '訪問記録を追加', new_place_evaluation_path(@place), class: 'p-place-show__section-button c-button'
 
-    .p-place-show__section-content.p-place-show__evaluation-list
+    .p-section-card__content.p-place-show__evaluation-list
       - @place_evaluations.each do |evaluation|
         %section.p-place-show__evaluation
           %dl.p-definition-list

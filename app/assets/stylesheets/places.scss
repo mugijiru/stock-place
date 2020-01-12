@@ -8,37 +8,21 @@
 @import 'objects/projects/button-group';
 @import 'objects/projects/form';
 @import 'objects/projects/form-section';
+@import 'objects/projects/section-card';
 
 .p-place-show {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
 
-  &__section {
-    display: grid;
-    grid-template:
-      " .    .    . " 30px
-      " . header  . " auto
-      " .    .    . " 20px
-      " . content . " auto
-      " .    .    . " 20px
-      / 40px auto 40px;
-    background-color: #fff;
-    border-radius: 5px;
-  }
-
   &__section-header {
-    grid-area: header;
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
   &__section-title {
     flex: 1;
-  }
-
-  &__section-content {
-    grid-area: content;
   }
 
   &__evaluation-list {
