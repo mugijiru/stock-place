@@ -4,20 +4,15 @@
     = link_to 'New Stock', new_stock_path, class: 'c-button c-button--primary'
 
   .p-section-card__content
-    %table
-      %thead
+    %table.p-table.p-table--full-width.p-table--no-footer
+      %thead.p-table__header
         %tr
-          %th
-          %th
-          %th
-
-      %tbody
-        %tr
-          %th 名称
-          %th 住所
-          %th
+          %th.p-table__cell.p-table__cell--header 名称
+          %th.p-table__cell.p-table__cell--header 住所
+          %th.p-table__cell.p-table__cell--header
+      %tbody.p-table__body
         - @places.each do |place|
           %tr
-            %td= place.name
-            %td= place.address
-            %td= link_to '詳細', place_path(place), class: 'c-button'
+            %td.p-table__cell= place.name
+            %td.p-table__cell= place.address
+            %td.p-table__cell.p-table__cell--right-align= link_to '詳細', place_path(place), class: 'c-button'
