@@ -37,10 +37,4 @@
     grid-template-columns: 1fr;
     grid-row-gap: 20px;
   }
-
-  &__button-group {
-    display: grid;
-    grid-template-columns: repeat(auto-fil, 120px);
-    justify-content: center;
-  }
 }
