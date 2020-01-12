@@ -25,7 +25,7 @@ RSpec.describe "Places::Evaluations", type: :system do
         evaluation = create(:place_evaluation, place: place, visited_on: Date.yesterday, point: :no_good)
         visit "/places/#{place.id}"
 
-        within('.place-evaluation:first-of-type') do
+        within('.p-place-show__evaluation:first-of-type') do
           click_on('修正する')
         end
 
@@ -48,7 +48,7 @@ RSpec.describe "Places::Evaluations", type: :system do
         evaluation = create(:place_evaluation, place: place, visited_on: '2020/01/01', point: :good)
         visit "/places/#{place.id}"
 
-        within('.place-evaluation:first-of-type') do
+        within('.p-place-show__evaluation:first-of-type') do
           accept_confirm('本当に削除しますか?') do
             click_on('削除する')
           end
