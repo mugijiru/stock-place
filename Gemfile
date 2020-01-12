@@ -50,6 +50,7 @@ group :development do
   gem 'solargraph'
   gem 'i18n_generators', require: false
   gem 'bullet'
+  gem 'brakeman'
 end
 
 group :test do
