@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Place, type: :model do
-  describe 'scope' do
+  describe 'finder methods' do
     describe 'recently_visited' do
       it '最後に訪問した順の降順で返って来ること' do
         place1 = create(:place, name: 'place1')
