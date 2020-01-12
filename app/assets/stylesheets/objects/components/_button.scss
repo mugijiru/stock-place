@@ -1,12 +1,14 @@
+@import '../../foundations/color';
+
 .c-button {
   display: block;
   padding: 5px 15px;
   font-size: 13px;
   font-weight: bold;
-  color: #000;
+  color: #fff;
   text-align: center;
   text-decoration: none;
-  background-color: #ccc;
+  background-color: $color-primary-1;
   border-radius: 3px;
   transition: .3s;
 
@@ -21,6 +23,6 @@
 
   &--primary {
     color: #fff;
-    background-color: #000;
+    background-color: $color-primary-4;
   }
 }
