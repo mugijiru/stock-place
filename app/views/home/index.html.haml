@@ -1,14 +1,14 @@
 %section.p-home-section--2-columns
   %section
-    %h2 また行きたい
+    %h2.p-home-section__title また行きたい
     %dl.p-home-definition-list
       - @grouped_evaluations[:good].each do |evaluation|
-        %dt.p-home-definition-list__title= link_to evaluation.place.name, place_path(evaluation.place_id), class: 'p-home-text-link'
+        %dt.p-home-definition-list__title= link_to evaluation.place.name, place_path(evaluation.place_id), class: 'c-text-link--light'
         %dd.p-home-definition-list__definition= "訪問日: #{l(evaluation.visited_on)}"
 
   %section
-    %h2 たまになら
+    %h2.p-home-section__title たまになら
     %dl.p-home-definition-list
       - @grouped_evaluations[:not_bad].each do |evaluation|
-        %dt.p-home-definition-list__title= link_to evaluation.place.name, place_path(evaluation.place_id), class: 'p-home-text-link'
+        %dt.p-home-definition-list__title= link_to evaluation.place.name, place_path(evaluation.place_id), class: 'c-text-link--light'
         %dd.p-home-definition-list__definition= "訪問日: #{l(evaluation.visited_on)}"

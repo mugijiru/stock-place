@@ -2,11 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import 'foundations/color';
+
 .p-home-section {
   &--2-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px 20px;
+  }
+
+  &__title {
+    color: $color-primary-4;
   }
 }
 
