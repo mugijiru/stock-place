@@ -51,6 +51,7 @@ group :development do
   gem 'i18n_generators', require: false
   gem 'bullet'
   gem 'brakeman'
+  gem 'annotate'
 end
 
 group :test do
