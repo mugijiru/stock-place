@@ -5,5 +5,14 @@
 
   &--light {
     color: $color-primary-1;
+    transition: .3s;
+
+    &:hover {
+      color: $color-primary-2;
+    }
+  }
+
+  &--no-decorate {
+    text-decoration: none;
   }
 }
