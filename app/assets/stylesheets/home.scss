@@ -1,3 +1,32 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.p-home-section {
+  &--2-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px 20px;
+  }
+}
+
+.p-home-definition-list {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 5px 10px;
+  align-items: center;
+
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111;
+  }
+
+  &__definition {
+    font-size: 12px;
+  }
+}
+
+.p-home-text-link {
+  color: #111;
+}
