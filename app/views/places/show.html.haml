@@ -3,8 +3,8 @@
     - if notice.present?
       %p#notice= notice
 
-    .p-section-card__header.p-place-show__section-header
-      %h2.p-place-show__section-title= @place.name
+    .p-section-card__header.p-content-header
+      %h2.p-content-header__title= @place.name
       = link_to '編集', edit_place_path(@place), class: 'p-place-show__section-button c-button'
 
     %dl.p-section-card__content
@@ -12,8 +12,8 @@
       %dd= @place.address
 
   %section.p-section-card
-    .p-section-card__header.p-place-show__section-header
-      %h3.p-place-show__section-title 訪問記録
+    .p-section-card__header.p-content-header
+      %h3.p-content-header__title 訪問記録
       = link_to '訪問記録を追加', new_place_evaluation_path(@place), class: 'p-place-show__section-button c-button'
 
     .p-section-card__content.p-place-show__evaluation-list
