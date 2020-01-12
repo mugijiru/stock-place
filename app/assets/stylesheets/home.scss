@@ -3,16 +3,14 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @import 'foundations/color';
+@import 'objects/projects/section-card';
+@import 'objects/projects/content-header';
 
 .p-home-section {
   &--2-columns {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px 20px;
-  }
-
-  &__title {
-    color: $color-primary-4;
   }
 }
 

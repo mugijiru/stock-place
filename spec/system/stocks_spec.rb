@@ -18,7 +18,7 @@ RSpec.describe 'Stocks', type: :system do
         fill_in '訪問日', with: '2020/01/01'
         choose 'また行きたい'
 
-        click_on 'Save' # TODO: I18n
+        click_on '保存'
 
         expect(page).to have_text('successfully') # TODO: I18n
         expect(page).to have_text('Stock')
@@ -38,7 +38,7 @@ RSpec.describe 'Stocks', type: :system do
         fill_in '訪問日', with: '2020/01/01'
         choose 'また行きたい'
 
-        click_on 'Save' # TODO: I18n
+        click_on '保存'
 
         expect(page).not_to have_text('successfully') # TODO: I18n
         expect(page).to have_text('New stock')

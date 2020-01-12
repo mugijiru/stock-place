@@ -1,23 +1,18 @@
-%h2 Stocks
+%section.p-section-card
+  .p-section-card__header.p-content-header
+    %h2.p-content-header__title Stocks
+    = link_to 'New Stock', new_stock_path, class: 'c-button c-button--primary'
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
-
-  %tbody
-    %tr
-      %th 名称
-      %th 住所
-      %th
-      %th
-    - @places.each do |place|
-      %tr
-        %td= place.name
-        %td= place.address
-        %td= link_to '詳細', place_path(place), class: 'c-button'
-        %td= link_to '削除', stock_path(place), :method => :delete, :data => { :confirm => 'Are you sure?' }, class: 'c-button c-button--danger'
-
-= link_to 'New Stock', new_stock_path
+  .p-section-card__content
+    %table.p-table.p-table--full-width.p-table--no-footer
+      %thead.p-table__header
+        %tr
+          %th.p-table__cell.p-table__cell--header 名称
+          %th.p-table__cell.p-table__cell--header 住所
+          %th.p-table__cell.p-table__cell--header
+      %tbody.p-table__body
+        - @places.each do |place|
+          %tr
+            %td.p-table__cell= place.name
+            %td.p-table__cell= place.address
+            %td.p-table__cell.p-table__cell--right-align= link_to '詳細', place_path(place), class: 'c-button'
