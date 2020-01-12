@@ -9,7 +9,7 @@ RSpec.describe "Places::Evaluations", type: :system do
         click_on('訪問記録を追加')
         fill_in '訪問日', with: '2020/01/01'
         choose 'また行きたい'
-        click_on('Save')
+        click_on('保存')
         expect(page).to have_content('successfully')
         expect(page).to have_content('test_place')
         expect(page).to have_content('また行きたい')
@@ -31,7 +31,7 @@ RSpec.describe "Places::Evaluations", type: :system do
 
         fill_in '訪問日', with: '2020/01/01'
         choose 'また行きたい'
-        click_on('Save')
+        click_on('保存')
 
         expect(page).to have_content('successfully')
         expect(page).to have_content('test_place')
