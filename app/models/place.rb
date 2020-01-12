@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: places
+#
+#  id         :bigint           not null, primary key
+#  name       :string           not null
+#  address    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Place < ApplicationRecord
   has_many :evaluations, class_name: 'PlaceEvaluation', inverse_of: :place
 
