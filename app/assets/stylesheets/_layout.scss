@@ -1,10 +1,14 @@
+@import 'foundations/color';
+
 .application {
   display: grid;
   grid-template:
     "       header             header             header       " 50px
     "         .                  .                  .          " 20px
     "         .                content              .          " minmax(calc(100vh - 70px), auto)
+    "         .                  .                  .          " calc(20px) // workaround for https://github.com/sass/libsass/issues/2706
     / minmax(20px, 1fr) minmax(800px, auto) minmax(20px, 1fr);
+  background-color: #eee;
 }
 
 .application__header {

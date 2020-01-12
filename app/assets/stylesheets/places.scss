@@ -2,8 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+@import 'foundations/color';
 @import 'objects/components/input';
 @import 'objects/components/label';
 @import 'objects/projects/button-group';
 @import 'objects/projects/form';
 @import 'objects/projects/form-section';
+@import 'objects/projects/section-card';
+@import 'objects/projects/definition-list';
+@import 'objects/projects/content-header';
+
+.p-place-show {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+
+  &__evaluation-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+  }
+
+  &__evaluation {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 20px;
+  }
+}

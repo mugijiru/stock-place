@@ -1,0 +1,9 @@
+.p-content-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &__title {
+    flex: 1;
+  }
+}

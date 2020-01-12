@@ -1,26 +1,34 @@
-%h2= @place.name
+%section.p-place-show
+  %section.p-section-card
+    - if notice.present?
+      %p#notice= notice
 
-%p#notice= notice
+    .p-section-card__header.p-content-header
+      %h2.p-content-header__title= @place.name
+      = link_to '編集', edit_place_path(@place), class: 'p-place-show__section-button c-button'
 
-%dl
-  %dt 住所
-  %dd= @place.address
+    %dl.p-section-card__content
+      %dt 住所
+      %dd= @place.address
 
-%h3 訪問記録
-- @place_evaluations.each do |evaluation|
-  %section.place-evaluation
-    %dl
-      %dt 訪問日
-      %dd= l(evaluation.visited_on)
-      %dt リピートあり?
-      %dd= evaluation.point_text
+  %section.p-section-card
+    .p-section-card__header.p-content-header
+      %h3.p-content-header__title 訪問記録
+      = link_to '訪問記録を追加', new_place_evaluation_path(@place), class: 'p-place-show__section-button c-button'
 
-    = link_to '修正する', edit_place_evaluation_path(@place, evaluation)
-    = link_to '削除する', place_evaluation_path(@place, evaluation), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'c-button c-button--danger'
+    .p-section-card__content.p-place-show__evaluation-list
+      - @place_evaluations.each do |evaluation|
+        %section.p-place-show__evaluation
+          %dl.p-definition-list
+            %dt.p-definition-list__title 訪問日
+            %dd= l(evaluation.visited_on)
+            %dt.p-definition-list__title リピートあり?
+            %dd= evaluation.point_text
+
+          %ul.p-button-group
+            %li= link_to '修正する', edit_place_evaluation_path(@place, evaluation), class: 'c-button'
+            %li= link_to '削除する', place_evaluation_path(@place, evaluation), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'c-button c-button--danger'
 
 
-= link_to '訪問記録を追加', new_place_evaluation_path(@place)
-
-%ul
-  %li= link_to 'Back', stocks_path
-  %li= link_to '編集', edit_place_path(@place)
+  %ul.p-button-group
+    %li= link_to 'Stock へ戻る', stocks_path, class: 'c-button'
