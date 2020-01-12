@@ -1,2 +1,35 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%h2 Home
+
+%section
+  %h3 また行きたい
+  %table
+    %thead
+      %tr
+        %th 名前
+        %th 住所
+        %th 訪問日
+        %th
+    %tbody
+      - @grouped_evaluations[:good].each do |evaluation|
+        %tr
+          %td= evaluation.place.name
+          %td= evaluation.place.address
+          %td= evaluation.visited_on
+          %td= link_to '詳細', place_path(evaluation.place_id), class: 'c-button'
+
+%section
+  %h3 たまになら
+  %table
+    %thead
+      %tr
+        %th 名前
+        %th 住所
+        %th 訪問日
+        %th
+    %tbody
+      - @grouped_evaluations[:not_bad].each do |evaluation|
+        %tr
+          %td= evaluation.place.name
+          %td= evaluation.place.address
+          %td= evaluation.visited_on
+          %td= link_to '詳細', place_path(evaluation.place_id), class: 'c-button'
