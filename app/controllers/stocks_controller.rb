@@ -2,7 +2,7 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    @places = Place.order(id: :desc).all
+    @places = Place.recently_visited
   end
 
   # GET /stocks/new
