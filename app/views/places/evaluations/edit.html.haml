@@ -3,27 +3,4 @@
     %h2.p-content-header__title #{@place.name} の訪問記録を修正
 
   = form_with model: @evaluation, url: place_evaluation_path(@place.id, @evaluation.id), method: :put, local: true, class: 'p-form p-section-card__content' do |f|
-    - if @evaluation.errors.any?
-      #error_explanation
-        %h2= "訪問記録の保存に失敗しました。#{pluralize(@evaluation.errors.count, "error")}個の問題があります。"
-        %ul
-          - @place.errors.full_messages.each do |msg|
-            %li= msg
-
-    %section.p-form-section.p-form-section--2-columns
-      %p.p-form-section__input-group
-        = f.label :visited_on, class: 'c-label' do
-          %span.c-label__text 訪問日
-          = f.date_field :visited_on, class: 'c-input'
-      %fieldset.p-form-section__input-group.p-fieldset
-        %legend.p-fieldset__legend リピートあり?
-        %ul.p-fieldset__list
-          - PlaceEvaluation.point.values.each do |value|
-            %li.p-fieldset__list-item
-              = label_tag nil, class: 'c-radio-label' do
-                = f.radio_button(:point, value, class: 'c-radio-label__radio-button')
-                %span.c-radio-label__text= t("enumerize.place_evaluation.point.#{value}")
-
-    %section.p-button-group
-      = link_to 'キャンセル', place_path(@place), class: 'c-button'
-      = f.submit '保存する', class: 'c-button c-button--primary'
+    = render 'places/evaluations/form_contents', f: f,  place: @place, evaluation: @evaluation
