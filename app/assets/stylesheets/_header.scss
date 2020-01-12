@@ -1,4 +1,5 @@
 @import 'objects/components/button';
+@import 'objects/components/text_link';
 
 .header {
   position: fixed;
@@ -10,13 +11,13 @@
     / 20px auto 1fr auto 20px auto 20px;
   align-items: center;
   min-width: 100vw;
-  background-color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .3);
+  background-color: $color-primary-4;
 
   &__application-name {
     grid-area: name;
     font-size: 20px;
     font-weight: bold;
+    color: $color-primary-1;
   }
 
   &__nav {

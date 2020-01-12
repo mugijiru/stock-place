@@ -1,4 +1,10 @@
+@import './color';
+
 ol,
 ul {
   list-style-type: none;
+}
+
+a {
+  color: $color-primary-0;
 }
