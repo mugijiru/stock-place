@@ -13,7 +13,7 @@ RSpec.describe "Places", type: :system do
         click_on('編集')
         fill_in('名称', with: 'new_name')
         fill_in('住所', with: 'new_address')
-        click_on('Save')
+        click_on('保存')
         expect(page).to have_content('successfully')
         expect(page).not_to have_content('old_name')
         expect(page).not_to have_content('old_address')
