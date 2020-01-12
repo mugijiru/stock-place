@@ -1,0 +1,9 @@
+@import 'foundations/color';
+
+.c-text-link {
+  color: $color-primary-4;
+
+  &--light {
+    color: $color-primary-1;
+  }
+}
