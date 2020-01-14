@@ -71,6 +71,7 @@ jobs:
         yarn
 
     - name: Run Tests
+      uses: paambaati/codeclimate-action@v2.4.0
       env:
         PGHOST: localhost
         PGUSER: postgres
@@ -78,9 +79,9 @@ jobs:
         CI: true
         DISPLAY: ':99'
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
-      run: |
-        eval "$(rbenv init -)"
-        bundle exec rspec
+        CC_TEST_REPORTER_ID: secrets.CODE_CLIMATE_REPORTER_ID>
+      with:
+        coverageCommand: eval "$(rbenv init -)" && bundle exec rspec
 
     - name: Upload coverage results
       uses: actions/upload-artifact@v1
