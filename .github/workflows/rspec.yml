@@ -48,6 +48,11 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-yarn-
 
+    - name: Setup Code Climate test-reporter
+      run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+
     - name: Set up rbenv
       run: |
         eval "$(rbenv init -)"
@@ -70,6 +75,11 @@ jobs:
         bin/rails db:setup
         yarn
 
+    - name: CodeClimate prebuild
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
+      run: ./cc-test-reporter before-build
+
     - name: Run Tests
       env:
         PGHOST: localhost
@@ -81,6 +91,11 @@ jobs:
       run: |
         eval "$(rbenv init -)"
         bundle exec rspec
+
+    - name: CodeClimate afterbuild
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
+      run: ./cc-test-reporter after-build
 
     - name: Upload coverage results
       uses: actions/upload-artifact@v1
