@@ -14,6 +14,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
     "stylelint": "^12.0.1",
     "stylelint-config-recess-order": "^2.0.3",
     "stylelint-scss": "^3.13.0",
