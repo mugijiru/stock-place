@@ -43,4 +43,10 @@ Rails.application.routes.draw do
   resources :places, only: %i[show edit update] do
     resources :evaluations, only: %i[new create edit update destroy], controller: 'places/evaluations'
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :places, only: %i[index]
+    end
+  end
 end
