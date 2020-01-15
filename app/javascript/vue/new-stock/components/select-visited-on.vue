@@ -1,7 +1,7 @@
 <template lang='pug'>
 section
   h3 いついった?
-  input.c-input(type='date' @change='setVisitedOn($event)')
+  input#place_evaluation_visited_on.c-input(type='date' @change='setVisitedOn($event)')
 </template>
 
 <script>
