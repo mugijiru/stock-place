@@ -1,13 +1,11 @@
 <template lang='pug'>
 section
   h3 どうだった?
-  fieldset.p-form-section__input-group.p-fieldset
-    legend.p-fieldset__legend リピートあり?
-    ul.p-fieldset__list
-      li.p-fieldset__list-item(v-for='(value, key) in evaluationPoints')
-        label.c-radio-label
-          input.c-radio-label__radio-button(type='radio' :value='key')
-          span.c-radio-label__text {{ value }}
+  ul.p-fieldset__list
+    li.p-fieldset__list-item(v-for='(value, key) in evaluationPoints')
+      label.c-radio-label(@click='setPoint(key)')
+        input.c-radio-label__radio-button(type='radio' :value='key')
+        span.c-radio-label__text {{ value }}
 </template>
 
 <script>
@@ -20,6 +18,13 @@ export default {
         not_bad: 'たまにはいいかも',
         good: 'また行きたい'
       }
+    }
+  },
+
+  methods: {
+    setPoint(key) {
+      this.$parent.point = key
+      this.$router.push('confirm-screen')
     }
   }
 };

@@ -4,9 +4,6 @@ section
   ul
     li(v-for='place in sortedPlaces' :key='place.id')
       button(@click='setPlaceId(place.id)') {{ place.name }}
-
-  section.p-button-group
-    button.c-button 次へ
 </template>
 
 <script>
@@ -34,6 +31,7 @@ export default {
   methods: {
     setPlaceId(placeId) {
       this.$parent.placeId = placeId
+      this.$router.push('select-visited-on')
     }
   }
 };
