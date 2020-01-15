@@ -16,7 +16,7 @@ section.p-section-card
 <script>
 import axios from 'axios';
 
-if (process.env.NODE_ENV !== 'test') {
+if (process.env.RAILS_ENV !== 'test') {
   axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('[name="csrf-token"]').getAttribute('content')
 }
 
