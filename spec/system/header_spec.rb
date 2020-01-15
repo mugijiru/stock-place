@@ -1,11 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Header', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
-  it 'Stock 追加画面に遷移できる' do
+  it 'Stock 追加画面に遷移できる', js: true do
     visit '/'
     click_on 'Stock!'
     expect(page).to have_text('New stock')
