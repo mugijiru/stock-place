@@ -8,6 +8,11 @@ section.p-section-card
 
 <script>
 export default {
+  data() {
+    return {
+      placeId: null
+    }
+  }
 };
 </script>
 
