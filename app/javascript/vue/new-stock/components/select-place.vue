@@ -7,20 +7,16 @@ section
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  data() {
-    return {
-      places: []
-    }
-  },
-
   created() {
-    axios.get('/api/v1/places').then(response => { this.places = response.data })
+    this.fetchPlaces()
   },
 
   computed: {
+    ...mapGetters('places', { places:  'all' }),
+
     sortedPlaces() {
       const tmp = this.places.concat();
       tmp.sort((a, b) => a.id < b.id)
@@ -29,6 +25,8 @@ export default {
   },
 
   methods: {
+    ...mapActions('places', { fetchPlaces: 'fetch' }),
+
     setPlaceId(placeId) {
       this.$parent.placeId = placeId
       this.$router.push('select-visited-on')
