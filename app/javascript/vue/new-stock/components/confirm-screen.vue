@@ -5,10 +5,14 @@ section
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   methods: {
+    ...mapActions('placeEvaluation', { registerEvaluation: 'register' }),
+
     submit() {
-      this.$parent.submit().then(_ => {
+      this.registerEvaluation().then(_ => {
         location.href = '/stocks'
       })
     }

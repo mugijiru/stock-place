@@ -1,3 +1,9 @@
+import axios from 'axios';
+if (process.env.RAILS_ENV !== 'test') {
+  axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('[name="csrf-token"]').getAttribute('content')
+}
+
+
 const state = {
   placeId: null,
   visitedOn: null,
@@ -10,7 +16,11 @@ const getters = {
   getPoint:     state => state.point
 }
 
-const actions = {}
+const actions = {
+  register({state}) {
+    return axios.post('/api/v1/place_evaluations', { place_evaluation: { place_id: state.placeId, visited_on: state.visitedOn, point: state.point }})
+  }
+}
 
 const mutations = {
   setPlaceId(state, payload)   { state.placeId = payload.placeId },

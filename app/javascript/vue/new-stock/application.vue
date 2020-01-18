@@ -14,12 +14,7 @@ section.p-section-card
 </template>
 
 <script>
-import axios from 'axios';
 import { mapGetters } from 'vuex'
-
-if (process.env.RAILS_ENV !== 'test') {
-  axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('[name="csrf-token"]').getAttribute('content')
-}
 
 export default {
   computed: {
@@ -28,18 +23,6 @@ export default {
       visitedOn: 'getVisitedOn',
       point: 'getPoint'
     })
-  },
-
-  methods: {
-    submit() {
-      return new Promise((resolve, reject) => {
-        axios.post('/api/v1/place_evaluations', { place_evaluation: { place_id: this.placeId, visited_on: this.visitedOn, point: this.point }}).then(response => {
-          resolve(response.data);
-        }).catch(error => {
-          reject(error)
-        })
-      })
-    }
   }
 };
 </script>
