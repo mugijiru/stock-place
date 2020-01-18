@@ -5,7 +5,8 @@ const state = {
 }
 
 const getters = {
-  all: state => state.all
+  all: state => state.all,
+  orderDesc: state => state.all.concat().sort((a, b) => a.id < b.id)
 }
 
 const actions = {

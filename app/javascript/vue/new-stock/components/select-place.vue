@@ -15,13 +15,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('places', { places:  'all' }),
-
-    sortedPlaces() {
-      const tmp = this.places.concat();
-      tmp.sort((a, b) => a.id < b.id)
-      return tmp
-    }
+    ...mapGetters('places', { places:  'all', sortedPlaces: 'orderDesc' })
   },
 
   methods: {
