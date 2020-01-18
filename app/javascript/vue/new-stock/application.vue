@@ -15,18 +15,19 @@ section.p-section-card
 
 <script>
 import axios from 'axios';
+import { mapGetters } from 'vuex'
 
 if (process.env.RAILS_ENV !== 'test') {
   axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('[name="csrf-token"]').getAttribute('content')
 }
 
 export default {
-  data() {
-    return {
-      placeId: null,
-      visitedOn: null,
-      point: null
-    }
+  computed: {
+    ...mapGetters('placeEvaluation', {
+      placeId: 'getPlaceId',
+      visitedOn: 'getVisitedOn',
+      point: 'getPoint'
+    })
   },
 
   methods: {

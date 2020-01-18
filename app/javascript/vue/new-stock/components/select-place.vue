@@ -3,11 +3,11 @@ section
   h3 場所はどこ?
   ul
     li(v-for='place in sortedPlaces' :key='place.id')
-      button(@click='setPlaceId(place.id)') {{ place.name }}
+      button(@click='set(place.id)') {{ place.name }}
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
   created() {
@@ -20,9 +20,10 @@ export default {
 
   methods: {
     ...mapActions('places', { fetchPlaces: 'fetch' }),
+    ...mapMutations('placeEvaluation', ['setPlaceId']),
 
-    setPlaceId(placeId) {
-      this.$parent.placeId = placeId
+    set(placeId) {
+      this.setPlaceId({placeId})
       this.$router.push('select-visited-on')
     }
   }
