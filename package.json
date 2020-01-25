@@ -21,7 +21,7 @@
     "jsdom": "^16.0.1",
     "jsdom-global": "^3.0.2",
     "mocha": "^7.0.0",
-    "mocha-webpack": "^2.0.0-beta.0",
+    "mochapack": "^1.1.13",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "stylelint": "^12.0.1",
@@ -30,6 +30,6 @@
     "webpack-dev-server": "^3.10.1"
   },
   "scripts": {
-    "test": "mocha-webpack --webpack-config config/webpack/test.js --require spec/javascripts/setup.js spec/javascripts/**/*.spec.js"
+    "test": "RAILS_ENV=test mochapack --webpack-config config/webpack/test.js --require spec/javascripts/setup.js spec/javascripts/**/*.spec.js"
   }
 }
