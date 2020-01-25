@@ -17,11 +17,20 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.31",
+    "chai": "^4.2.0",
+    "jsdom": "^16.0.1",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^7.0.0",
+    "mochapack": "^1.1.13",
     "pug": "^2.0.4",
     "pug-plain-loader": "^1.0.0",
     "stylelint": "^12.0.1",
     "stylelint-config-recess-order": "^2.0.3",
     "stylelint-scss": "^3.13.0",
     "webpack-dev-server": "^3.10.1"
+  },
+  "scripts": {
+    "test": "RAILS_ENV=test mochapack --webpack-config config/webpack/test.js --require spec/javascripts/setup.js spec/javascripts/**/*.spec.js"
   }
 }
