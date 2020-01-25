@@ -1,6 +1,7 @@
 <template lang='pug'>
 section
   h3 場所はどこ?
+  button(@click='$router.push({ path: "/add-place" })') 場所を追加
   ul
     li(v-for='place in sortedPlaces' :key='place.id')
       button(@click='set(place.id)') {{ place.name }}
