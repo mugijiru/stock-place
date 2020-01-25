@@ -3,12 +3,14 @@ section
   h3 どうだった?
   ul.p-fieldset__list
     li.p-fieldset__list-item(v-for='(value, key) in evaluationPoints')
-      label.c-radio-label(@click='setPoint(key)')
+      label.c-radio-label(@click='set(key)')
         input.c-radio-label__radio-button(type='radio' :value='key')
         span.c-radio-label__text {{ value }}
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
@@ -22,8 +24,10 @@ export default {
   },
 
   methods: {
-    setPoint(key) {
-      this.$parent.point = key
+    ...mapMutations('placeEvaluation', ['setPoint']),
+
+    set(point) {
+      this.setPoint({point})
       this.$router.push('confirm-screen')
     }
   }

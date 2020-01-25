@@ -14,31 +14,15 @@ section.p-section-card
 </template>
 
 <script>
-import axios from 'axios';
-
-if (process.env.RAILS_ENV !== 'test') {
-  axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('[name="csrf-token"]').getAttribute('content')
-}
+import { mapGetters } from 'vuex'
 
 export default {
-  data() {
-    return {
-      placeId: null,
-      visitedOn: null,
-      point: null
-    }
-  },
-
-  methods: {
-    submit() {
-      return new Promise((resolve, reject) => {
-        axios.post('/api/v1/place_evaluations', { place_evaluation: { place_id: this.placeId, visited_on: this.visitedOn, point: this.point }}).then(response => {
-          resolve(response.data);
-        }).catch(error => {
-          reject(error)
-        })
-      })
-    }
+  computed: {
+    ...mapGetters('placeEvaluation', {
+      placeId: 'getPlaceId',
+      visitedOn: 'getVisitedOn',
+      point: 'getPoint'
+    })
   }
 };
 </script>

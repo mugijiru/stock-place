@@ -3,34 +3,27 @@ section
   h3 場所はどこ?
   ul
     li(v-for='place in sortedPlaces' :key='place.id')
-      button(@click='setPlaceId(place.id)') {{ place.name }}
+      button(@click='set(place.id)') {{ place.name }}
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
-  data() {
-    return {
-      places: []
-    }
-  },
-
   created() {
-    axios.get('/api/v1/places').then(response => { this.places = response.data })
+    this.fetchPlaces()
   },
 
   computed: {
-    sortedPlaces() {
-      const tmp = this.places.concat();
-      tmp.sort((a, b) => a.id < b.id)
-      return tmp
-    }
+    ...mapGetters('places', { places:  'all', sortedPlaces: 'orderDesc' })
   },
 
   methods: {
-    setPlaceId(placeId) {
-      this.$parent.placeId = placeId
+    ...mapActions('places', { fetchPlaces: 'fetch' }),
+    ...mapMutations('placeEvaluation', ['setPlaceId']),
+
+    set(placeId) {
+      this.setPlaceId({placeId})
       this.$router.push('select-visited-on')
     }
   }
