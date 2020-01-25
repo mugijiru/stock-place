@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :places, only: %i[index]
+      resources :places, only: %i[index create]
       resources :place_evaluations, only: %i[create]
     end
   end

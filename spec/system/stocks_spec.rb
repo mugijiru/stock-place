@@ -2,13 +2,17 @@ require 'rails_helper'
 
 RSpec.describe 'Stocks', type: :system, js: true do
   describe '新しいストック' do
-    context '入力が正しければ' do
-      it 'Stock を投稿できる' do
-        create(:place, name: 'M78星雲')
-
+    context '新しい場所を利用する場合' do
+      it '追加した場所を利用して Stock を投稿できる' do
         visit '/'
 
         click_on 'Stock!'
+
+        click_on '場所を追加'
+
+        fill_in '名称', with: 'M78星雲'
+        fill_in '住所', with: '宇宙の彼方'
+        click_on '保存'
 
         click_on 'M78星雲'
 
@@ -23,22 +27,45 @@ RSpec.describe 'Stocks', type: :system, js: true do
       end
     end
 
-    context '入力が間違えていれば' do
-      xit 'Stock の投稿に失敗し投稿フォームが再表示される' do
-        visit '/'
+    context '既存の場所を利用する場合' do
+      context '入力が正しければ' do
+        it 'Stock を投稿できる' do
+          create(:place, name: 'M78星雲')
 
-        click_on 'Stock!'
+          visit '/'
 
-        click_on 'M78星雲'
-        # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
-        fill_in 'place_evaluation_visited_on', with: '002020/01/01'
-        choose 'また行きたい'
+          click_on 'Stock!'
 
-        click_on '保存'
+          click_on 'M78星雲'
 
-        expect(page).to have_text('New stock')
-        expect(page).to have_text('名称を入力してください')
-        expect(page).to have_field('住所', with: '宇宙の彼方')
+          # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
+          fill_in 'place_evaluation_visited_on', with: '002020/01/01'
+          choose 'また行きたい'
+
+          click_on 'OK'
+
+          expect(page).to have_text('Stock')
+          expect(page).to have_text('M78星雲')
+        end
+      end
+
+      context '入力が間違えていれば' do
+        xit 'Stock の投稿に失敗し投稿フォームが再表示される' do
+          visit '/'
+
+          click_on 'Stock!'
+
+          click_on 'M78星雲'
+          # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
+          fill_in 'place_evaluation_visited_on', with: '002020/01/01'
+          choose 'また行きたい'
+
+          click_on '保存'
+
+          expect(page).to have_text('New stock')
+          expect(page).to have_text('名称を入力してください')
+          expect(page).to have_field('住所', with: '宇宙の彼方')
+        end
       end
     end
   end
