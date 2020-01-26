@@ -110,6 +110,7 @@ jobs:
 
     - name: Notify slack build result
       uses: homoluctus/slatify@master
+      if: always()
       with:
           type: ${{ job.status }}
           job_name: '*RSpec*'
