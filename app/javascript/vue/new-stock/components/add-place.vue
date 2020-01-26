@@ -1,14 +1,19 @@
 <template lang='pug'>
   section
-    h3 場所の登録
-    form
-      label.c-label
-        span 名称
-        input.c-input(name='name' v-model='name')
-      label.c-label
-        span 住所
-        input.c-input(name='address' v-model='address')
-      button.c-button(type='submit' @click.stop.prevent='save') 保存
+    .p-content-header
+      h3.p-content-header__title 場所の登録
+    form.p-form
+      section.p-form-section
+        label.c-label
+          span 名称
+          input.c-input(name='name' v-model='name')
+        label.c-label
+          span 住所
+          input.c-input(name='address' v-model='address')
+
+      .p-button-group
+        a.c-button(type='submit' @click.stop.prevent='$router.push({ path: "/select-place" })') キャンセル
+        button.c-button.c-button--primary(type='submit' @click.stop.prevent='save') 保存
 
 </template>
 
