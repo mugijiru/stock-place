@@ -34,7 +34,8 @@ export default {
 }
 
 .current-data {
+  padding-left: 30px;
+  margin-left: 30px;
   border-left: 1px solid #000;
-  padding-left: 20px;
 }
 </style>

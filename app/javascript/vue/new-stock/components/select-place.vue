@@ -1,5 +1,5 @@
 <template lang='pug'>
-section
+section.p-select-place
   .p-content-header
     h3.p-content-header__title 場所はどこ?
     button.c-button(@click='$router.push({ path: "/add-place" })') 新規登録
