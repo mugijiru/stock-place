@@ -1,6 +1,8 @@
 <template lang='pug'>
 section
-  h3 いついった?
+  .p-content-header
+    h3.p-content-header__title いついった?
+
   input#place_evaluation_visited_on.c-input(type='date' @change='set($event)')
 </template>
 

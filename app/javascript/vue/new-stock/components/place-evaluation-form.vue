@@ -1,6 +1,7 @@
 <template lang='pug'>
 section
-  h3 どうだった?
+  .p-content-header
+    h3.p-content-header__title どうだった?
   ul.p-fieldset__list
     li.p-fieldset__list-item(v-for='(value, key) in evaluationPoints')
       label.c-radio-label(@click='set(key)')
