@@ -8,7 +8,7 @@ RSpec.describe 'Stocks', type: :system, js: true do
 
         click_on 'Stock!'
 
-        click_on '場所を追加'
+        click_on '新規登録'
 
         fill_in '名称', with: 'M78星雲'
         fill_in '住所', with: '宇宙の彼方'

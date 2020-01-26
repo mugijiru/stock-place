@@ -1,7 +1,8 @@
 <template lang='pug'>
 section
-  h3 これでいい?
-  button(@click='submit') OK
+  .p-content-header
+    h3.p-content-header__title これでいい?
+  button.c-button(@click='submit') OK
 </template>
 
 <script>
