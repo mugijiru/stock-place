@@ -8,12 +8,12 @@ section.p-section-card
       .p-content-header
         h3.p-content-header__title 入力内容
       dl.current-data
-        dt.current-data__title 場所ID
-        dd.current-data__definition {{ placeId }}
+        dt.current-data__title 場所
+        dd.current-data__definition {{ placeName }}
         dt.current-data__title 訪問日
         dd.current-data__definition {{ visitedOn }}
         dt.current-data__title 評価
-        dd.current-data__definition {{ point }}
+        dd.current-data__definition {{ pointText }}
 </template>
 
 <script>
@@ -22,9 +22,9 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters('placeEvaluation', {
-      placeId: 'getPlaceId',
+      placeName: 'getPlaceName',
       visitedOn: 'getVisitedOn',
-      point: 'getPoint'
+      pointText: 'getPointText'
     })
   }
 };

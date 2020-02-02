@@ -3,13 +3,25 @@ import axios from 'libs/axios';
 const state = {
   placeId: null,
   visitedOn: null,
-  point: null
+  point: null,
+  pointOptions: {
+    no_good: 'もう行かない',
+    no_comment: 'ノーコメント',
+    not_bad: 'たまにはいいかも',
+    good: 'また行きたい'
+  }
 }
 
 const getters = {
   getPlaceId:   state => state.placeId,
   getVisitedOn: state => state.visitedOn,
-  getPoint:     state => state.point
+  getPoint:     state => state.point,
+  getPointText: state => state.point ? state.pointOptions[state.point] : '',
+  getPlaceName: (state, getters, rootState, rootGetters) => {
+    const place = rootGetters['places/all'].find(element => element["id"] === getters.getPlaceId)
+    return place ? place.name : '指定なし'
+  },
+  pointOptions: state => state.pointOptions
 }
 
 const actions = {
