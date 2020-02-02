@@ -14,6 +14,11 @@ section.p-section-card
         dd.current-data__definition {{ visitedOn }}
         dt.current-data__title 評価
         dd.current-data__definition {{ pointText }}
+
+      section(v-if='errors.length > 0')
+        h4 入力エラーがありました
+        ul.errors
+          li(v-for='error in errors') {{ error }}
 </template>
 
 <script>
@@ -25,7 +30,9 @@ export default {
       placeName: 'getPlaceName',
       visitedOn: 'getVisitedOn',
       pointText: 'getPointText'
-    })
+    }),
+
+    ...mapGetters('errors', { errors: 'all' })
   }
 };
 </script>
@@ -58,6 +65,11 @@ export default {
   &__definition {
     font-size: 14px;
   }
+}
+
+.errors {
+  font-size: 12px;
+  color: #f00;
 }
 
 
