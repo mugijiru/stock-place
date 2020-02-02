@@ -4,7 +4,7 @@ RSpec.describe 'Places::Evaluations', type: :request do
   describe 'POST /places/:id/evaluations' do
     context '正しいリクエストの場合' do
       it '新規評価が登録できる' do
-        place = create(:place, name: 'test_place')
+        place = create(:visited_place, name: 'test_place')
         post "/places/#{place.id}/evaluations", params: { place_evaluation: { visited_on: Date.today, point: :good } }
         aggregate_failures do
           expect(response).to have_http_status(:found)
@@ -18,7 +18,7 @@ RSpec.describe 'Places::Evaluations', type: :request do
 
     context '誤ったリクエストの場合' do
       it '新規評価が登録に失敗する' do
-        place = create(:place, name: 'test_place')
+        place = create(:visited_place, name: 'test_place')
         post "/places/#{place.id}/evaluations", params: { place_evaluation: { visited_on: Date.today, point: -1000 } }
         aggregate_failures do
           expect(response).to have_http_status(:ok)
@@ -33,8 +33,8 @@ RSpec.describe 'Places::Evaluations', type: :request do
   describe 'PUT /places/:place_id/evaluations/:id' do
     context '正しいリクエストの場合' do
       it '評価を修正できる' do
-        place = create(:place, name: 'test_place')
-        evaluation = create(:place_evaluation, place: place, visited_on: Date.yesterday, point: :no_good)
+        place = create(:visited_place, name: 'test_place')
+        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, point: :no_good)
         put "/places/#{place.id}/evaluations/#{evaluation.id}", params: { place_evaluation: { visited_on: Date.today, point: :good } }
         aggregate_failures do
           expect(response).to have_http_status(:found)
@@ -48,8 +48,8 @@ RSpec.describe 'Places::Evaluations', type: :request do
 
     context '誤ったリクエストの場合' do
       it '評価を修正できない' do
-        place = create(:place, name: 'test_place')
-        evaluation = create(:place_evaluation, place: place, visited_on: Date.yesterday, point: :no_good)
+        place = create(:visited_place, name: 'test_place')
+        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, point: :no_good)
         put "/places/#{place.id}/evaluations/#{evaluation.id}", params: { place_evaluation: { visited_on: Date.today, point: 2000 } }
         aggregate_failures do
           expect(response).to have_http_status(:ok)

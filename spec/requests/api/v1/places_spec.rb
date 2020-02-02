@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe 'Api::V1::PlacesController', type: :request do
   describe 'GET /api/v1/places' do
     it '登録済の場所一覧を取得できる' do
-      create_list(:place, 5)
+      create_list(:visited_place, 5)
 
       get '/api/v1/places'
 

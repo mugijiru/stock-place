@@ -1,12 +1,12 @@
 class Places::EvaluationsController < ApplicationController
   def new
-    @place = Place.find(params[:place_id])
-    @evaluation = @place.evaluations.build
+    @place = VisitedPlace.find(params[:place_id])
+    @evaluation = @place.reports.build
   end
 
   def create
-    @place = Place.find(params[:place_id])
-    @evaluation = @place.evaluations.build(evaluation_params)
+    @place = VisitedPlace.find(params[:place_id])
+    @evaluation = @place.reports.build(evaluation_params)
 
     if @evaluation.save
       redirect_to place_path(@place), notice: 'Evaluation was successfully created.'
@@ -16,13 +16,13 @@ class Places::EvaluationsController < ApplicationController
   end
 
   def edit
-    @place = Place.find(params[:place_id])
-    @evaluation = @place.evaluations.find(params[:id])
+    @place = VisitedPlace.find(params[:place_id])
+    @evaluation = @place.reports.find(params[:id])
   end
 
   def update
-    @place = Place.find(params[:place_id])
-    @evaluation = @place.evaluations.find(params[:id])
+    @place = VisitedPlace.find(params[:place_id])
+    @evaluation = @place.reports.find(params[:id])
 
     if @evaluation.update(evaluation_params)
       redirect_to place_path(@place), notice: 'Evaluation was successfully updated.'
@@ -32,8 +32,8 @@ class Places::EvaluationsController < ApplicationController
   end
 
   def destroy
-    @place = Place.find(params[:place_id])
-    @evaluation = @place.evaluations.find(params[:id])
+    @place = VisitedPlace.find(params[:place_id])
+    @evaluation = @place.reports.find(params[:id])
     if @evaluation.destroy
       redirect_to place_path(@place), notice: '訪問記録を削除しました'
     else

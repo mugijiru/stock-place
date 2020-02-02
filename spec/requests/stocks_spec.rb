@@ -4,7 +4,7 @@ RSpec.describe 'Stocks', type: :request do
   describe 'GET /stocks' do
     it 'ストックした場所一覧を取得できる' do
       params = place_params.merge(name: 'おいしいラーメン屋')
-      create(:place, params)
+      create(:visited_place, params)
       get stocks_path
       expect(response.body).to include('おいしいラーメン屋')
     end
@@ -37,7 +37,7 @@ RSpec.describe 'Stocks', type: :request do
   describe 'DELETE /stocks/:id' do
     it 'ストックした場所を削除できる' do
       create_params = place_params.merge(name: 'おいしいラーメン屋')
-      place = create(:place, create_params)
+      place = create(:visited_place, create_params)
 
       delete stock_path(place)
 

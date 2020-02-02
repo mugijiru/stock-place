@@ -2,12 +2,12 @@ module Api
   module V1
     class PlacesController < ApplicationController
       def index
-        @places = Place.all
+        @places = VisitedPlace.all
         render json: @places.to_json
       end
 
       def create
-        @place = Place.new(place_params)
+        @place = VisitedPlace.new(place_params)
 
         @place.save!
         render json: @place, status: :created
