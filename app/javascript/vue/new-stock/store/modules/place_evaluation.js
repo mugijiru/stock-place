@@ -9,7 +9,11 @@ const state = {
 const getters = {
   getPlaceId:   state => state.placeId,
   getVisitedOn: state => state.visitedOn,
-  getPoint:     state => state.point
+  getPoint:     state => state.point,
+  getPlaceName: (state, getters, rootState, rootGetters) => {
+    const place = rootGetters['places/all'].find(element => element["id"] === getters.getPlaceId)
+    return place ? place.name : '指定なし'
+  }
 }
 
 const actions = {
