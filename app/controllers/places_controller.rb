@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
     @place = VisitedPlace.find(params[:id])
 
     respond_to do |format|
-      if @place.update(place_params)
+      if @place.update(visited_place_params)
         format.html { redirect_to place_path(@place), notice: 'VisitedPlace was successfully updated.' }
         format.json { render :show, status: :ok, location: place_path(@place.id) }
       else
@@ -24,7 +24,7 @@ class PlacesController < ApplicationController
 
   private
 
-  def place_params
-    params.require(:place).permit(:name, :address)
+  def visited_place_params
+    params.require(:visited_place).permit(:name, :address)
   end
 end
