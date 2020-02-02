@@ -24,7 +24,7 @@ RSpec.describe 'Places', type: :request do
   describe 'PUT /places/:id' do
     it '場所情報が更新できる' do
       place = create(:visited_place, name: 'for update', address: 'foo')
-      put "/places/#{place.id}", params: { place: { name: 'updated_name', address: 'bar' } }
+      put "/places/#{place.id}", params: { visited_place: { name: 'updated_name', address: 'bar' } }
       aggregate_failures do
         expect(response).to have_http_status(:found)
         follow_redirect!
