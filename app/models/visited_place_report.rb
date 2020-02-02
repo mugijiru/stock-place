@@ -10,10 +10,10 @@
 #  updated_at :datetime         not null
 #
 
-class PlaceEvaluation < ApplicationRecord
+class VisitedPlaceReport < ApplicationRecord
   extend Enumerize
 
-  belongs_to :place
+  belongs_to :visited_place, foreign_key: 'place_id'
 
   validates :visited_on, presence: true
   validate :validate_today_or_past_date

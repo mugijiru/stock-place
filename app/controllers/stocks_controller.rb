@@ -2,24 +2,24 @@ class StocksController < ApplicationController
   # GET /stocks
   # GET /stocks.json
   def index
-    @places = Place.recently_visited
+    @places = VisitedPlace.recently_visited
   end
 
   # GET /stocks/new
   def new
-    @place = Place.new
-    @place_evaluation = @place.evaluations.build
+    @place = VisitedPlace.new
+    @place_evaluation = @place.reports.build
   end
 
   # POST /stocks
   # POST /stocks.json
   def create
-    @place = Place.new(place_params)
-    @place_evaluation = @place.evaluations.build(place_evaluation_params)
+    @place = VisitedPlace.new(place_params)
+    @place_evaluation = @place.reports.build(place_evaluation_params)
 
     respond_to do |format|
       if @place.save
-        format.html { redirect_to place_path(@place), notice: 'Place was successfully created.' }
+        format.html { redirect_to place_path(@place), notice: 'VisitedPlace was successfully created.' }
         format.json { render :show, status: :created, location: place_path(@place.id) }
       else
         format.html { render :new }
@@ -31,10 +31,10 @@ class StocksController < ApplicationController
   # DELETE /stocks/1
   # DELETE /stocks/1.json
   def destroy
-    @place = Place.find(params[:id])
+    @place = VisitedPlace.find(params[:id])
     @place.destroy
     respond_to do |format|
-      format.html { redirect_to stocks_url, notice: 'Place was successfully destroyed.' }
+      format.html { redirect_to stocks_url, notice: 'VisitedPlace was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

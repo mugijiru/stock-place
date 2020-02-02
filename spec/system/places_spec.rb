@@ -8,7 +8,7 @@ RSpec.describe "Places", type: :system do
   describe '場所情報の更新' do
     context '入力が正しければ' do
       it '場所情報が更新できる' do
-        place = create(:place, name: 'old_name', address: 'old_address')
+        place = create(:visited_place, name: 'old_name', address: 'old_address')
         visit "/places/#{place.id}"
         click_on('編集')
         fill_in('名称', with: 'new_name')

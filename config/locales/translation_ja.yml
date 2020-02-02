@@ -1,28 +1,28 @@
 ja:
   activerecord:
     models:
-      place: 場所
-      place_evaluation: 訪問評価
+      visited_place: 場所
+      visited_place_report: 訪問評価
       place_item: 商品
 
     attributes:
-      place:
+      visited_place:
         address: 住所
-        evaluations: 評価
+        reports: 評価
         name: 名称
 
-      place_evaluation:
-        place: :activerecord.models.place
+      visited_place_report:
+        visited_place: :activerecord.models.visited_place
         point: ポイント
         visited_on: 訪問日
 
       place_item:
         name: 商品名
-        place: :activerecord.models.place
+        place: :activerecord.models.visited_place
         price: 価格
 
   enumerize:
-    place_evaluation:
+    visited_place_report:
       point:
         no_good: もう行かない
         no_comment: 未訪問/ノーコメント

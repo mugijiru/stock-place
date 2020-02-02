@@ -11,7 +11,7 @@
 #
 
 class PlaceItem < ApplicationRecord
-  belongs_to :place
+  belongs_to :visited_place, foreign_key: 'place_id'
 
   validates :name, presence: true
   validates :price, presence: true, numericality: { only_integer: true }

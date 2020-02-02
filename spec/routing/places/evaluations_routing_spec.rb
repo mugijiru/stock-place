@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Places::EvaluationsController, type: :routing do
   describe 'routing' do
-    let(:place) { create(:place) }
+    let(:place) { create(:visited_place) }
 
     it 'routes to #new' do
       expect(get: "/places/#{place.id}/evaluations/new").to route_to('places/evaluations#new', place_id: place.id.to_s)

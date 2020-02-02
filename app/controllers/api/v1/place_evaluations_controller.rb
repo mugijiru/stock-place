@@ -1,11 +1,11 @@
 class Api::V1::PlaceEvaluationsController < ApplicationController
   def create
-    place_evaluation = PlaceEvaluation.new(place_evaluation_params)
+    place_report = VisitedPlaceReport.new(place_evaluation_params)
 
-    if place_evaluation.save
-      render json: place_evaluation.to_json, status: :created
+    if place_report.save
+      render json: place_report.to_json, status: :created
     else
-      render json: { errors: place_evaluation.errors.full_messages }, status: :unprocessable_entity
+      render json: { errors: place_report.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

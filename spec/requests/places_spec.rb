@@ -3,10 +3,10 @@ require "rails_helper"
 RSpec.describe 'Places', type: :request do
   describe 'GET /places/:id' do
     it '場所情報と評価一覧が表示される' do
-      place = create(:place, name: 'for places test')
+      place = create(:visited_place, name: 'for places test')
       dates = [Date.today, Date.today - 3.days, Date.today - 7.days]
       dates.each do |date|
-        create(:place_evaluation, place: place, visited_on: date)
+        create(:visited_place_report, visited_place: place, visited_on: date)
       end
 
       get "/places/#{place.id}"
@@ -23,8 +23,8 @@ RSpec.describe 'Places', type: :request do
 
   describe 'PUT /places/:id' do
     it '場所情報が更新できる' do
-      place = create(:place, name: 'for update', address: 'foo')
-      put "/places/#{place.id}", params: { place: { name: 'updated_name', address: 'bar' } }
+      place = create(:visited_place, name: 'for update', address: 'foo')
+      put "/places/#{place.id}", params: { visited_place: { name: 'updated_name', address: 'bar' } }
       aggregate_failures do
         expect(response).to have_http_status(:found)
         follow_redirect!
