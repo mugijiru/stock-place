@@ -8,7 +8,7 @@ class StocksController < ApplicationController
   # GET /stocks/new
   def new
     @place = VisitedPlace.new
-    @place_evaluation = @place.evaluations.build
+    @place_evaluation = @place.reports.build
   end
 
   # POST /stocks

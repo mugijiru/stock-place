@@ -4,7 +4,7 @@ RSpec.describe "Places::Evaluations", type: :system do
   describe '評価の登録' do
     context '入力が正しければ' do
       it '評価を登録できる' do
-        place = create(:place, name: 'test_place')
+        place = create(:visited_place, name: 'test_place')
         visit "/places/#{place.id}"
         click_on('訪問記録を追加')
         fill_in '訪問日', with: '2020/01/01'
@@ -21,8 +21,8 @@ RSpec.describe "Places::Evaluations", type: :system do
   describe '評価の修正' do
     context '入力が正しければ' do
       it '評価を修正できる' do
-        place = create(:place, name: 'test_place')
-        evaluation = create(:place_evaluation, place: place, visited_on: Date.yesterday, point: :no_good)
+        place = create(:visited_place, name: 'test_place')
+        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, point: :no_good)
         visit "/places/#{place.id}"
 
         within('.p-place-show__evaluation:first-of-type') do
@@ -44,8 +44,8 @@ RSpec.describe "Places::Evaluations", type: :system do
   describe '評価の削除' do
     context '入力が正しければ' do
       it '評価を削除できる', js: true do
-        place = create(:place, name: 'test_place')
-        evaluation = create(:place_evaluation, place: place, visited_on: '2020/01/01', point: :good)
+        place = create(:visited_place, name: 'test_place')
+        evaluation = create(:visited_place_report, visited_place: place, visited_on: '2020/01/01', point: :good)
         visit "/places/#{place.id}"
 
         within('.p-place-show__evaluation:first-of-type') do

@@ -8,7 +8,7 @@ RSpec.describe 'Header', type: :system do
   end
 
   it 'Stock 一覧画面に遷移できる' do
-    create(:place, name: 'test place')
+    create(:visited_place, name: 'test place')
     visit '/'
     click_on 'Stocks'
     expect(page).to have_text('test place')

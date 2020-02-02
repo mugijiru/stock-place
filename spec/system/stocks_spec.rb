@@ -30,7 +30,7 @@ RSpec.describe 'Stocks', type: :system, js: true do
     context '既存の場所を利用する場合' do
       context '入力が正しければ' do
         it 'Stock を投稿できる' do
-          create(:place, name: 'M78星雲')
+          create(:visited_place, name: 'M78星雲')
 
           visit '/'
 
