@@ -26,7 +26,12 @@ const getters = {
 
 const actions = {
   register({state}) {
-    return axios.post('/api/v1/place_evaluations', { place_evaluation: { place_id: state.placeId, visited_on: state.visitedOn, point: state.point }})
+    return new Promise((resolve, reject) => {
+      axios.post('/api/v1/place_evaluations',
+                 { place_evaluation: { place_id: state.placeId, visited_on: state.visitedOn, point: state.point }}).
+        then(response => resolve(response.data)).
+        catch(error => reject(error))
+    })
   }
 }
 
