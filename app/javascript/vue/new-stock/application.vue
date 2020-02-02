@@ -13,7 +13,7 @@ section.p-section-card
         dt.current-data__title 訪問日
         dd.current-data__definition {{ visitedOn }}
         dt.current-data__title 評価
-        dd.current-data__definition {{ point }}
+        dd.current-data__definition {{ pointText }}
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
     ...mapGetters('placeEvaluation', {
       placeName: 'getPlaceName',
       visitedOn: 'getVisitedOn',
-      point: 'getPoint'
+      pointText: 'getPointText'
     })
   }
 };
