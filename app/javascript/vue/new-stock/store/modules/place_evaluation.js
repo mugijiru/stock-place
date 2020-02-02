@@ -20,7 +20,8 @@ const getters = {
   getPlaceName: (state, getters, rootState, rootGetters) => {
     const place = rootGetters['places/all'].find(element => element["id"] === getters.getPlaceId)
     return place ? place.name : '指定なし'
-  }
+  },
+  pointOptions: state => state.pointOptions
 }
 
 const actions = {
