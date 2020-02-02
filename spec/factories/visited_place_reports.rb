@@ -11,8 +11,8 @@
 #
 
 FactoryBot.define do
-  factory :place_evaluation do
-    place { nil }
+  factory :visited_place_report do
+    visited_place { nil }
     visited_on { Date.today }
     point { :good }
   end

@@ -10,19 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_02_081337) do
+ActiveRecord::Schema.define(version: 2020_02_02_100622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "place_evaluations", force: :cascade do |t|
-    t.bigint "place_id", null: false
-    t.date "visited_on", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.integer "point", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["place_id"], name: "index_place_evaluations_on_place_id"
-  end
 
   create_table "place_items", force: :cascade do |t|
     t.bigint "place_id", null: false
@@ -33,13 +24,22 @@ ActiveRecord::Schema.define(version: 2020_01_02_081337) do
     t.index ["place_id"], name: "index_place_items_on_place_id"
   end
 
-  create_table "places", force: :cascade do |t|
+  create_table "visited_place_reports", force: :cascade do |t|
+    t.bigint "place_id", null: false
+    t.date "visited_on", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.integer "point", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_visited_place_reports_on_place_id"
+  end
+
+  create_table "visited_places", force: :cascade do |t|
     t.string "name", null: false
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "place_evaluations", "places"
-  add_foreign_key "place_items", "places"
+  add_foreign_key "place_items", "visited_places", column: "place_id"
+  add_foreign_key "visited_place_reports", "visited_places", column: "place_id"
 end
