@@ -6,7 +6,7 @@ class Places::EvaluationsController < ApplicationController
 
   def create
     @place = VisitedPlace.find(params[:place_id])
-    @evaluation = @place.reports.build(evaluation_params)
+    @evaluation = @place.reports.build(visited_place_report_params)
 
     if @evaluation.save
       redirect_to place_path(@place), notice: 'Evaluation was successfully created.'
@@ -24,7 +24,7 @@ class Places::EvaluationsController < ApplicationController
     @place = VisitedPlace.find(params[:place_id])
     @evaluation = @place.reports.find(params[:id])
 
-    if @evaluation.update(evaluation_params)
+    if @evaluation.update(visited_place_report_params)
       redirect_to place_path(@place), notice: 'Evaluation was successfully updated.'
     else
       render :edit
@@ -43,7 +43,7 @@ class Places::EvaluationsController < ApplicationController
 
   private
 
-  def evaluation_params
-    params.require(:place_evaluation).permit(:visited_on, :point)
+  def visited_place_report_params
+    params.require(:visited_place_report).permit(:visited_on, :point)
   end
 end
