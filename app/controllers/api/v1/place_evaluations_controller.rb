@@ -4,6 +4,8 @@ class Api::V1::PlaceEvaluationsController < ApplicationController
 
     if place_evaluation.save
       render json: place_evaluation.to_json, status: :created
+    else
+      render json: { errors: place_evaluation.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
