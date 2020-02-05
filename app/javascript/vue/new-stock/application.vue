@@ -13,7 +13,7 @@ section.p-section-card
         dt.current-data__title 訪問日
         dd.current-data__definition {{ visitedOn }}
         dt.current-data__title 評価
-        dd.current-data__definition {{ pointText }}
+        dd.current-data__definition {{ evaluationText }}
 
       section(v-if='errors.length > 0')
         h4 入力エラーがありました
@@ -29,7 +29,7 @@ export default {
     ...mapGetters('placeEvaluation', {
       placeName: 'getPlaceName',
       visitedOn: 'getVisitedOn',
-      pointText: 'getPointText'
+      evaluationText: 'getEvaluationText'
     }),
 
     ...mapGetters('errors', { errors: 'all' })

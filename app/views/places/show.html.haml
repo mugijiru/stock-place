@@ -23,7 +23,7 @@
             %dt.p-definition-list__title 訪問日
             %dd= l(evaluation.visited_on)
             %dt.p-definition-list__title リピートあり?
-            %dd= evaluation.point_text
+            %dd= evaluation.evaluation_text
 
           %ul.p-button-group
             %li= link_to '修正する', edit_place_evaluation_path(@place, evaluation), class: 'c-button'

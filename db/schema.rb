@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_02_100622) do
+ActiveRecord::Schema.define(version: 2020_02_05_124846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,12 @@ ActiveRecord::Schema.define(version: 2020_02_02_100622) do
   end
 
   create_table "visited_place_reports", force: :cascade do |t|
-    t.bigint "place_id", null: false
+    t.bigint "visited_place_id", null: false
     t.date "visited_on", default: -> { "CURRENT_TIMESTAMP" }, null: false
-    t.integer "point", default: 0, null: false
+    t.integer "evaluation", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["place_id"], name: "index_visited_place_reports_on_place_id"
+    t.index ["visited_place_id"], name: "index_visited_place_reports_on_visited_place_id"
   end
 
   create_table "visited_places", force: :cascade do |t|
@@ -41,5 +41,5 @@ ActiveRecord::Schema.define(version: 2020_02_02_100622) do
   end
 
   add_foreign_key "place_items", "visited_places", column: "place_id"
-  add_foreign_key "visited_place_reports", "visited_places", column: "place_id"
+  add_foreign_key "visited_place_reports", "visited_places"
 end

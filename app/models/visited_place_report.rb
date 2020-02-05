@@ -1,25 +1,25 @@
 # == Schema Information
 #
-# Table name: place_evaluations
+# Table name: visited_place_reports
 #
-#  id         :bigint           not null, primary key
-#  place_id   :bigint           not null
-#  visited_on :date             not null
-#  point      :integer          default("no_comment"), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id               :bigint           not null, primary key
+#  visited_place_id :bigint           not null
+#  visited_on       :date             not null
+#  evaluation       :integer          default("no_comment"), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
 #
 
 class VisitedPlaceReport < ApplicationRecord
   extend Enumerize
 
-  belongs_to :visited_place, foreign_key: 'place_id'
+  belongs_to :visited_place
 
   validates :visited_on, presence: true
   validate :validate_today_or_past_date
-  validates :point, presence: true, numericality: { only_integer: true }
+  validates :evaluation, presence: true, numericality: { only_integer: true }
 
-  enumerize :point, in: { no_good: -1, no_comment: 0, not_bad: 1, good: 2 }, scope: :having_point
+  enumerize :evaluation, in: { no_good: -1, no_comment: 0, not_bad: 1, good: 2 }, scope: :having_evaluation
 
   private
 

@@ -15,7 +15,7 @@ RSpec.describe 'Stocks', type: :request do
       params = {
         stock: {
           place: place_params.merge(address: 'test 1-1-1'),
-          place_evaluation: place_evaluation_params.merge(visited_on: Date.yesterday, point: "not_bad")
+          place_evaluation: place_evaluation_params.merge(visited_on: Date.yesterday, evaluation: "not_bad")
         }
       }
       post stocks_path, params: params
@@ -57,6 +57,6 @@ RSpec.describe 'Stocks', type: :request do
   end
 
   def place_evaluation_params
-    { visited_on: Date.yesterday, point: :good }
+    { visited_on: Date.yesterday, evaluation: :good }
   end
 end

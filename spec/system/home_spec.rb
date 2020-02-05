@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe 'Home', type: :system do
   it '「また行きたい」「たまになら」という評価の場所一覧が表示される' do
     visited_place = create(:visited_place, name: 'サイコーな場所')
-    create(:visited_place_report, visited_place: visited_place, point: :good)
+    create(:visited_place_report, visited_place: visited_place, evaluation: :good)
     visited_place2 = create(:visited_place, name: 'まあまあな場所')
-    create(:visited_place_report, visited_place: visited_place2, point: :not_bad)
+    create(:visited_place_report, visited_place: visited_place2, evaluation: :not_bad)
 
     visit '/'
 

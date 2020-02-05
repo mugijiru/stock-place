@@ -2,18 +2,18 @@ ja:
   activerecord:
     models:
       visited_place: 場所
-      visited_place_report: 訪問評価
+      visited_place_report: 訪問レポート
       place_item: 商品
 
     attributes:
       visited_place:
         address: 住所
-        reports: 評価
+        reports: レポート
         name: 名称
 
       visited_place_report:
         visited_place: :activerecord.models.visited_place
-        point: ポイント
+        evaluation: 評価
         visited_on: 訪問日
 
       place_item:
@@ -23,8 +23,8 @@ ja:
 
   enumerize:
     visited_place_report:
-      point:
+      evaluation:
         no_good: もう行かない
-        no_comment: 未訪問/ノーコメント
+        no_comment: ノーコメント
         not_bad: たまになら
         good: また行きたい

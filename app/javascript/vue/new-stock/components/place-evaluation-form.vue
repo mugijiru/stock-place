@@ -3,7 +3,7 @@ section
   .p-content-header
     h3.p-content-header__title どうだった?
   ul.p-fieldset__list
-    li.p-fieldset__list-item(v-for='(value, key) in pointOptions')
+    li.p-fieldset__list-item(v-for='(value, key) in evaluationOptions')
       label.c-radio-label(@click='set(key)')
         input.c-radio-label__radio-button(type='radio' :value='key')
         span.c-radio-label__text {{ value }}
@@ -14,14 +14,14 @@ import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters('placeEvaluation', ['pointOptions'])
+    ...mapGetters('placeEvaluation', ['evaluationOptions'])
   },
 
   methods: {
-    ...mapMutations('placeEvaluation', ['setPoint']),
+    ...mapMutations('placeEvaluation', ['setEvaluation']),
 
-    set(point) {
-      this.setPoint({point})
+    set(evaluation) {
+      this.setEvaluation({evaluation})
       this.$router.push('confirm-screen')
     }
   }

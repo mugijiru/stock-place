@@ -13,11 +13,11 @@
   %fieldset.p-form-section__input-group.p-fieldset
     %legend.p-fieldset__legend リピートあり?
     %ul.p-fieldset__list
-      - VisitedPlaceReport.point.values.each do |value|
+      - VisitedPlaceReport.evaluation.values.each do |value|
         %li.p-fieldset__list-item
           = label_tag nil, class: 'c-radio-label' do
-            = f.radio_button(:point, value, class: 'c-radio-label__radio-button')
-            %span.c-radio-label__text= t("enumerize.visited_place_report.point.#{value}")
+            = f.radio_button(:evaluation, value, class: 'c-radio-label__radio-button')
+            %span.c-radio-label__text= t("enumerize.visited_place_report.evaluation.#{value}")
 
 %section.p-button-group
   = link_to 'キャンセル', place_path(place), class: 'c-button'
