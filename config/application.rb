@@ -29,6 +29,9 @@ module StockPlaces
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # time_zone 設定は initializer に書いても反映されない
+    config.time_zone = 'Tokyo'
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end
