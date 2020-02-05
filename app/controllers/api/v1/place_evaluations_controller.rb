@@ -12,6 +12,6 @@ class Api::V1::PlaceEvaluationsController < ApplicationController
   private
 
   def place_evaluation_params
-    params.require(:place_evaluation).permit(:place_id, :visited_on, :point)
+    params.require(:place_evaluation).permit(:visited_place_id, :visited_on, :evaluation)
   end
 end

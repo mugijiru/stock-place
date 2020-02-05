@@ -46,6 +46,6 @@ class StocksController < ApplicationController
     end
 
     def place_evaluation_params
-      params.fetch(:stock, {}).require(:place_evaluation).permit(:visited_on, :point)
+      params.fetch(:stock, {}).require(:place_evaluation).permit(:visited_on, :evaluation)
     end
 end

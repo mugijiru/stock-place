@@ -19,7 +19,7 @@ class VisitedPlaceReport < ApplicationRecord
   validate :validate_today_or_past_date
   validates :evaluation, presence: true, numericality: { only_integer: true }
 
-  enumerize :evaluation, in: { no_good: -1, no_comment: 0, not_bad: 1, good: 2 }, scope: :having_point
+  enumerize :evaluation, in: { no_good: -1, no_comment: 0, not_bad: 1, good: 2 }, scope: :having_evaluation
 
   private
 

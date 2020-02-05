@@ -1,10 +1,10 @@
 import axios from 'libs/axios';
 
 const state = {
-  placeId: null,
+  visitedPlaceId: null,
   visitedOn: null,
-  point: null,
-  pointOptions: {
+  evaluation: null,
+  evaluationOptions: {
     no_good: 'もう行かない',
     no_comment: 'ノーコメント',
     not_bad: 'たまにはいいかも',
@@ -13,22 +13,22 @@ const state = {
 }
 
 const getters = {
-  getPlaceId:   state => state.placeId,
-  getVisitedOn: state => state.visitedOn,
-  getPoint:     state => state.point,
-  getPointText: state => state.point ? state.pointOptions[state.point] : '',
-  getPlaceName: (state, getters, rootState, rootGetters) => {
-    const place = rootGetters['places/all'].find(element => element["id"] === getters.getPlaceId)
+  getVisitedPlaceId: state => state.visitedPlaceId,
+  getVisitedOn:      state => state.visitedOn,
+  getEvaluation:     state => state.evaluation,
+  getEvaluationText: state => state.evaluation ? state.evaluationOptions[state.evaluation] : '',
+  getPlaceName:      (state, getters, rootState, rootGetters) => {
+    const place = rootGetters['places/all'].find(element => element["id"] === getters.getVisitedPlaceId)
     return place ? place.name : '指定なし'
   },
-  pointOptions: state => state.pointOptions
+  evaluationOptions: state => state.evaluationOptions
 }
 
 const actions = {
   register({state}) {
     return new Promise((resolve, reject) => {
       axios.post('/api/v1/place_evaluations',
-                 { place_evaluation: { place_id: state.placeId, visited_on: state.visitedOn, point: state.point }}).
+                 { place_evaluation: { visited_place_id: state.visitedPlaceId, visited_on: state.visitedOn, evaluation: state.evaluation }}).
         then(response => resolve(response.data)).
         catch(error => reject(error))
     })
@@ -36,9 +36,9 @@ const actions = {
 }
 
 const mutations = {
-  setPlaceId(state, payload)   { state.placeId = payload.placeId },
-  setVisitedOn(state, payload) { state.visitedOn = payload.visitedOn },
-  setPoint(state, payload)     { state.point = payload.point }
+  setVisitedPlaceId(state, payload) { state.visitedPlaceId = payload.visitedPlaceId },
+  setVisitedOn(state, payload)      { state.visitedOn = payload.visitedOn },
+  setEvaluation(state, payload)     { state.evaluation = payload.evaluation }
 }
 
 export default {

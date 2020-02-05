@@ -44,6 +44,6 @@ class Places::EvaluationsController < ApplicationController
   private
 
   def visited_place_report_params
-    params.require(:visited_place_report).permit(:visited_on, :point)
+    params.require(:visited_place_report).permit(:visited_on, :evaluation)
   end
 end
