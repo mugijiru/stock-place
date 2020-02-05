@@ -14,6 +14,6 @@ FactoryBot.define do
   factory :visited_place_report do
     visited_place { nil }
     visited_on { Date.today }
-    point { :good }
+    evaluation { :good }
   end
 end
