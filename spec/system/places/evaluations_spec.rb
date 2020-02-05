@@ -22,7 +22,7 @@ RSpec.describe "Places::Evaluations", type: :system do
     context '入力が正しければ' do
       it '評価を修正できる' do
         place = create(:visited_place, name: 'test_place')
-        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, point: :no_good)
+        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, evaluation: :no_good)
         visit "/places/#{place.id}"
 
         within('.p-place-show__evaluation:first-of-type') do
@@ -45,7 +45,7 @@ RSpec.describe "Places::Evaluations", type: :system do
     context '入力が正しければ' do
       it '評価を削除できる', js: true do
         place = create(:visited_place, name: 'test_place')
-        evaluation = create(:visited_place_report, visited_place: place, visited_on: '2020/01/01', point: :good)
+        evaluation = create(:visited_place_report, visited_place: place, visited_on: '2020/01/01', evaluation: :good)
         visit "/places/#{place.id}"
 
         within('.p-place-show__evaluation:first-of-type') do
