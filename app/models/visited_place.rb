@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: places
+# Table name: visited_places
 #
 #  id         :bigint           not null, primary key
 #  name       :string           not null
