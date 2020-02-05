@@ -25,6 +25,6 @@ ja:
     visited_place_report:
       evaluation:
         no_good: もう行かない
-        no_comment: 未訪問/ノーコメント
+        no_comment: ノーコメント
         not_bad: たまになら
         good: また行きたい
