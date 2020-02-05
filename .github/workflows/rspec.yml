@@ -85,6 +85,7 @@ jobs:
         PGHOST: localhost
         PGUSER: postgres
         RAILS_ENV: test
+        TZ: Asia/Tokyo
         CI: true
         DISPLAY: ':99'
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
