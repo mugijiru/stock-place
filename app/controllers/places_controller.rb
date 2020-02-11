@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
 
     respond_to do |format|
       if @place.update(visited_place_params)
-        format.html { redirect_to place_path(@place), notice: 'VisitedPlace was successfully updated.' }
+        format.html { redirect_to place_path(@place), notice: "#{I18n.t('activerecord.models.visited_place')}の更新しました" }
         format.json { render :show, status: :ok, location: place_path(@place.id) }
       else
         format.html { render :edit }

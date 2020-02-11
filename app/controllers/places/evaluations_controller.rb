@@ -9,7 +9,7 @@ class Places::EvaluationsController < ApplicationController
     @evaluation = @place.reports.build(visited_place_report_params)
 
     if @evaluation.save
-      redirect_to place_path(@place), notice: 'Evaluation was successfully created.'
+      redirect_to place_path(@place), notice: "#{I18n.t('activerecord.models.visited_place_report')}を登録しました"
     else
       render :new
     end
@@ -25,7 +25,7 @@ class Places::EvaluationsController < ApplicationController
     @evaluation = @place.reports.find(params[:id])
 
     if @evaluation.update(visited_place_report_params)
-      redirect_to place_path(@place), notice: 'Evaluation was successfully updated.'
+      redirect_to place_path(@place), notice: "#{I18n.t('activerecord.models.visited_place_report')}を更新しました"
     else
       render :edit
     end

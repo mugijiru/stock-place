@@ -1,0 +1,13 @@
+@import 'foundations/color';
+
+.c-flash-message {
+  display: block;
+  padding: 5px 10px;
+  background-color: $color-complementary;
+  border-radius: 3px;
+
+  &__text {
+    font-size: 13px;
+    color: $color-primary-0;
+  }
+}
