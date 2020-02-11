@@ -1,3 +1,5 @@
+@import 'foundations/color';
+
 .c-input {
   padding: 5px 10px;
   font-size: 13px;
@@ -8,5 +10,9 @@
 
   &:focus {
     border-color: #000;
+  }
+
+  &--has-error {
+    border-color: $color-alert;
   }
 }

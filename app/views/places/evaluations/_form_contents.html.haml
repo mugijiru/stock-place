@@ -1,23 +1,20 @@
-- if evaluation.errors.any?
-  #error_explanation
-    %h2= "訪問記録の保存に失敗しました。#{pluralize(evaluation.errors.count, "error")}個の問題があります。"
-    %ul
-      - evaluation.errors.full_messages.each do |msg|
-        %li= msg
-
 %section.p-form-section.p-form-section--2-columns
   %p.p-form-section__input-group
-    = f.label :visited_on, class: 'c-label' do
-      %span.c-label__text 訪問日
-      = f.date_field :visited_on, class: 'c-input'
+    = f.label :visited_on, class: "c-label" do
+      %span.c-label__text{ class: "#{'c-label__text--has-error' if f.object.errors[:visited_on].present?}"} 訪問日
+      = f.date_field :visited_on, class: "c-input #{'c-input--has-error' if f.object.errors[:visited_on].present?}"
+      - if f.object.errors[:visited_on].present?
+        %span.c-error-message= f.object.errors.full_messages_for(:visited_on).join
   %fieldset.p-form-section__input-group.p-fieldset
-    %legend.p-fieldset__legend リピートあり?
-    %ul.p-fieldset__list
+    %legend.p-fieldset__legend{ class: "#{'p-fieldset__legend--has-error' if f.object.errors[:evaluation].present?}"} リピートあり?
+    %ul.p-fieldset__list{ class: "#{'p-fieldset__list--has-error' if f.object.errors[:evaluation].present?}"}
       - VisitedPlaceReport.evaluation.values.each do |value|
         %li.p-fieldset__list-item
           = label_tag nil, class: 'c-radio-label' do
             = f.radio_button(:evaluation, value, class: 'c-radio-label__radio-button')
             %span.c-radio-label__text= t("enumerize.visited_place_report.evaluation.#{value}")
+    - if f.object.errors[:evaluation].present?
+      %span.c-error-message= f.object.errors.full_messages_for(:evaluation).join
 
 %section.p-button-group
   = link_to 'キャンセル', place_path(place), class: 'c-button'

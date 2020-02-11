@@ -1,3 +1,5 @@
+@import 'foundations/color';
+
 .c-label {
   display: grid;
   grid-gap: 5px;
@@ -6,5 +8,9 @@
   &__text {
     display: block;
     font-size: 14px;
+
+    &--has-error {
+      color: $color-alert;
+    }
   }
 }
