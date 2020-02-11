@@ -2,7 +2,7 @@
   %p.p-form-section__input-group
     = f.label :visited_on, class: "c-label" do
       %span.c-label__text{ class: "#{'c-label__text--has-error' if f.object.errors[:visited_on].present?}"} 訪問日
-      = f.date_field :visited_on, class: "c-input #{'c-input--has-error' if f.object.errors[:visited_on].present?}"
+      = f.date_field :visited_on, max: Date.today.to_s(:database), class: "c-input #{'c-input--has-error' if f.object.errors[:visited_on].present?}"
       - if f.object.errors[:visited_on].present?
         %span.c-error-message= f.object.errors.full_messages_for(:visited_on).join
   %fieldset.p-form-section__input-group.p-fieldset
