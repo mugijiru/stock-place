@@ -1,4 +1,6 @@
+@import 'foundations/color';
+
 .c-error-message {
-  color: #f00;
+  color: $color-alert;
   font-size: 12px;
 }
