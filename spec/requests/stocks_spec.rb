@@ -34,24 +34,6 @@ RSpec.describe 'Stocks', type: :request do
     end
   end
 
-  describe 'DELETE /stocks/:id' do
-    it 'ストックした場所を削除できる' do
-      create_params = place_params.merge(name: 'おいしいラーメン屋')
-      place = create(:visited_place, create_params)
-
-      delete stock_path(place)
-
-      aggregate_failures do
-        expect(response).to have_http_status(:found)
-
-        follow_redirect!
-
-        expect(response).to have_http_status(:success)
-        expect(response.body).not_to include('ラーメン屋')
-      end
-    end
-  end
-
   def place_params
     { name: 'test', address: 'test x-y-z' }
   end

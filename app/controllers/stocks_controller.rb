@@ -28,17 +28,6 @@ class StocksController < ApplicationController
     end
   end
 
-  # DELETE /stocks/1
-  # DELETE /stocks/1.json
-  def destroy
-    @place = VisitedPlace.find(params[:id])
-    @place.destroy
-    respond_to do |format|
-      format.html { redirect_to stocks_url, notice: 'VisitedPlace was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def place_params
