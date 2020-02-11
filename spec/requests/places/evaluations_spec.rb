@@ -24,7 +24,7 @@ RSpec.describe 'Places::Evaluations', type: :request do
           expect(response).to have_http_status(:ok)
           expect(response.body).to include('test_place')
           expect(response.body).to include(Date.today.strftime('%Y-%m-%d'))
-          expect(response.body).to include('訪問記録の保存に失敗しました')
+          expect(response.body).to include('評価は一覧にありません')
         end
       end
     end
@@ -54,7 +54,7 @@ RSpec.describe 'Places::Evaluations', type: :request do
         aggregate_failures do
           expect(response).to have_http_status(:ok)
           expect(response.body).to include('test_place')
-          expect(response.body).to include('訪問記録の保存に失敗しました')
+          expect(response.body).to include('評価は一覧にありません')
           expect(response.body).to include(Date.today.strftime('%Y-%m-%d'))
           expect(response.body).to include('また行きたい')
         end
