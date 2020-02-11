@@ -1,5 +1,5 @@
 <template lang='pug'>
-section.p-select-place
+section.v-select-place
   .p-content-header
     h3.p-content-header__title 場所はどこ?
 
@@ -34,9 +34,13 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.p-selectable-places {
-  margin-top: 20px;
+.v-select-place {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 20px;
+}
 
+.p-selectable-places {
   &__header {
     width: 100%;
     height: 40px;
