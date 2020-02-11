@@ -9,4 +9,8 @@
   &:focus {
     border-color: #000;
   }
+
+  &--has-error {
+    border-color: #f00;
+  }
 }

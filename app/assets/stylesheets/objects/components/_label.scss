@@ -6,5 +6,9 @@
   &__text {
     display: block;
     font-size: 14px;
+
+    &--has-error {
+      color: #f00;
+    }
   }
 }
