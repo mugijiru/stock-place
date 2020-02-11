@@ -26,6 +26,6 @@ class VisitedPlaceReport < ApplicationRecord
   def validate_today_or_past_date
     return unless visited_on.present?
 
-    errors.add(:visited_on, '未来の日付を選択することはできません') if visited_on > Date.today
+    errors.add(:visited_on, 'に未来の日付を選択することはできません') if visited_on > Date.today
   end
 end
