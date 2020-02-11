@@ -22,7 +22,6 @@ export default {
 
     set(evaluation) {
       this.setEvaluation({evaluation})
-      this.$router.push('confirm-screen')
     }
   }
 };

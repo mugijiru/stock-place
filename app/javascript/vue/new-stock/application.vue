@@ -3,7 +3,10 @@ section.p-section-card
   .p-section-card__header.p-content-header
     h2.p-content-header__title New stock
   .p-section-card__content.a-2-columns
-    router-view
+    section
+      SelectPlace/
+      SelectVisitedOn/
+      PlaceEvaluationForm/
     section.current-data-section
       .p-content-header
         h3.p-content-header__title 入力内容
@@ -23,8 +26,17 @@ section.p-section-card
 
 <script>
 import { mapGetters } from 'vuex'
+import SelectPlace from './components/select-place'
+import SelectVisitedOn from './components/select-visited-on'
+import PlaceEvaluationForm from './components/place-evaluation-form'
 
 export default {
+  components: {
+    SelectPlace,
+    SelectVisitedOn,
+    PlaceEvaluationForm
+  },
+
   computed: {
     ...mapGetters('placeEvaluation', {
       placeName: 'getPlaceName',

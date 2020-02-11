@@ -2,7 +2,6 @@
 section.p-select-place
   .p-content-header
     h3.p-content-header__title 場所はどこ?
-    button.c-button(@click='$router.push({ path: "/add-place" })') 新規登録
 
   .p-selectable-places
     .p-selectable-places__header この中にある?
@@ -20,16 +19,15 @@ export default {
   },
 
   computed: {
-    ...mapGetters('places', { places:  'all', sortedPlaces: 'orderDesc' })
+    ...mapGetters('places', { places: 'all', sortedPlaces: 'orderDesc' })
   },
 
   methods: {
     ...mapActions('places', { fetchPlaces: 'fetch' }),
-    ...mapMutations('placeEvaluation', ['setPlaceId']),
+    ...mapMutations('placeEvaluation', ['setVisitedPlaceId']),
 
-    set(placeId) {
-      this.setPlaceId({placeId})
-      this.$router.push('select-visited-on')
+    set(visitedPlaceId) {
+      this.setVisitedPlaceId({visitedPlaceId})
     }
   }
 };

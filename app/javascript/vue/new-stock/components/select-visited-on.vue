@@ -22,7 +22,6 @@ export default {
 
     set(event) {
       this.setVisitedOn({visitedOn: event.target.value})
-      this.$router.push('place-evaluation-form')
     }
   }
 };
