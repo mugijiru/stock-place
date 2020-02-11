@@ -1,8 +1,14 @@
+@import 'foundations/color';
+
 .p-fieldset {
   border: 0;
 
   &__legend {
     font-size: 14px;
+
+    &--has-error {
+      color: $color-alert;
+    }
   }
 
   &__list {
