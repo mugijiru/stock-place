@@ -27,11 +27,11 @@ section.p-section-card
       li
         a.c-button(href='/stocks') キャンセル
       li
-        button.c-button.c-button--primary(type='submit') 保存する
+        button.c-button.c-button--primary(type='submit' @click='submit') 保存する
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 import SelectPlace from './components/select-place'
 import SelectVisitedOn from './components/select-visited-on'
 import PlaceEvaluationForm from './components/place-evaluation-form'
@@ -51,6 +51,19 @@ export default {
     }),
 
     ...mapGetters('errors', { errors: 'all' })
+  },
+
+  methods: {
+    ...mapActions('placeEvaluation', { registerEvaluation: 'register' }),
+    ...mapMutations('errors', ['setErrors']),
+
+    submit() {
+      this.registerEvaluation().then(_ => {
+        location.href = '/stocks'
+      }).catch(error => {
+        this.setErrors(error.response.data)
+      })
+    }
   }
 };
 </script>
