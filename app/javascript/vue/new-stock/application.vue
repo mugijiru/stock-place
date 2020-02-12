@@ -62,6 +62,7 @@ export default {
         location.href = '/stocks'
       }).catch(error => {
         this.setErrors(error.response.data)
+        window.scrollTo(0, 0)
       })
     }
   }
