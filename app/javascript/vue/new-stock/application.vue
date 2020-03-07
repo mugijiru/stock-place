@@ -5,8 +5,8 @@ section.p-section-card
   .p-section-card__content.new-stock-content
     .a-2-columns
       section.form-section
-        SelectPlace(@scroll-next='scrollSelectVisitedOn')
-        SelectVisitedOn#select-visited-on(@scroll-next='scrollSetPoint')
+        SelectPlace(@scroll-next='scrollTo("select-visited-on")')
+        SelectVisitedOn#select-visited-on(@scroll-next='scrollTo("set-point")')
         PlaceEvaluationForm#set-point
       section.current-data-section
         .p-content-header
@@ -66,12 +66,8 @@ export default {
       })
     },
 
-    scrollSelectVisitedOn() {
-      window.location.hash = 'select-visited-on'
-    },
-
-    scrollSetPoint() {
-      window.location.hash = 'set-point'
+    scrollTo(anchor) {
+      window.location.hash = anchor
     }
   }
 };
