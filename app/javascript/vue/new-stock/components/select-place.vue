@@ -28,6 +28,7 @@ export default {
 
     set(visitedPlaceId) {
       this.setVisitedPlaceId({visitedPlaceId})
+      this.$emit('scroll-next')
     }
   }
 };

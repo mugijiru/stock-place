@@ -22,6 +22,7 @@ export default {
 
     set(event) {
       this.setVisitedOn({visitedOn: event.target.value})
+      this.$emit('scroll-next')
     }
   }
 };

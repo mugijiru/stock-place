@@ -5,9 +5,9 @@ section.p-section-card
   .p-section-card__content.new-stock-content
     .a-2-columns
       section.form-section
-        SelectPlace/
-        SelectVisitedOn/
-        PlaceEvaluationForm/
+        SelectPlace(@scroll-next='scrollSelectVisitedOn')
+        SelectVisitedOn#select-visited-on(@scroll-next='scrollSetPoint')
+        PlaceEvaluationForm#set-point
       section.current-data-section
         .p-content-header
           h3.p-content-header__title 入力内容
@@ -64,6 +64,14 @@ export default {
         this.setErrors(error.response.data)
         window.scrollTo(0, 0)
       })
+    },
+
+    scrollSelectVisitedOn() {
+      window.location.hash = 'select-visited-on'
+    },
+
+    scrollSetPoint() {
+      window.location.hash = 'set-point'
     }
   }
 };
