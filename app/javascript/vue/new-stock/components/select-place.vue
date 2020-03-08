@@ -7,8 +7,7 @@ section.v-select-place
   .p-selectable-places
     .p-selectable-places__header
       span この中にある?
-      form.p-selectable-places__search
-        input.p-selectable-places__search-input(placeholder='検索')
+      SearchPlaces
     ul.p-selectable-places__list
       li.p-selectable-places__item(v-for='place in sortedPlaces' :key='place.id')
         button.p-selectable-places__select-button(@click='set(place.id)') {{ place.name }}
@@ -20,10 +19,12 @@ section.v-select-place
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 import 'vue-thin-modal/dist/vue-thin-modal.css'
 import AddPlace from './add-place'
+import SearchPlaces from './search-places'
 
 export default {
   components: {
-    AddPlace
+    AddPlace,
+    SearchPlaces
   },
 
   created() {
@@ -70,20 +71,6 @@ export default {
     background-color: #5288bc;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-  }
-
-  &__search-input {
-    width: 180px;
-    height: 24px;
-    padding: 0 15px;
-    font-size: 14px;
-    color: #111;
-    background-color: #fff;
-    border-radius: 24px;
-
-    &::placeholder {
-      color: #999;
-    }
   }
 
   &__item {
