@@ -1,6 +1,6 @@
 <template lang='pug'>
-  form.p-selectable-places__search
-    input.p-selectable-places__search-input(placeholder='検索')
+  form.p-search-places
+    input.p-search-places__input(placeholder='検索')
 </template>
 
 <script>
@@ -9,8 +9,8 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.p-selectable-places {
-  &__search-input {
+.p-search-places {
+  &__input {
     width: 180px;
     height: 24px;
     padding: 0 15px;
