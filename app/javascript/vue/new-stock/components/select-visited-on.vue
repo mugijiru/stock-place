@@ -1,5 +1,5 @@
 <template lang='pug'>
-section
+section.v-select-visited-on
   .p-content-header
     h3.p-content-header__title いついった?
 
@@ -22,11 +22,16 @@ export default {
 
     set(event) {
       this.setVisitedOn({visitedOn: event.target.value})
-      this.$router.push('place-evaluation-form')
+      this.$emit('scroll-next')
     }
   }
 };
 </script>
 
 <style lang='scss' scoped>
+.v-select-visited-on {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 20px;
+}
 </style>

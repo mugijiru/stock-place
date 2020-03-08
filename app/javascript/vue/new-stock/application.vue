@@ -2,29 +2,47 @@
 section.p-section-card
   .p-section-card__header.p-content-header
     h2.p-content-header__title New stock
-  .p-section-card__content.a-2-columns
-    router-view
-    section.current-data-section
-      .p-content-header
-        h3.p-content-header__title 入力内容
-      dl.current-data
-        dt.current-data__title 場所
-        dd.current-data__definition {{ placeName }}
-        dt.current-data__title 訪問日
-        dd.current-data__definition {{ visitedOn }}
-        dt.current-data__title 評価
-        dd.current-data__definition {{ evaluationText }}
+  .p-section-card__content.new-stock-content
+    .a-2-columns
+      section.form-section
+        SelectPlace(@scroll-next='scrollTo("select-visited-on")')
+        SelectVisitedOn#select-visited-on(@scroll-next='scrollTo("set-point")')
+        PlaceEvaluationForm#set-point
+      section.current-data-section
+        .p-content-header
+          h3.p-content-header__title 入力内容
+        dl.current-data
+          dt.current-data__title 場所
+          dd.current-data__definition {{ placeName }}
+          dt.current-data__title 訪問日
+          dd.current-data__definition {{ visitedOn }}
+          dt.current-data__title 評価
+          dd.current-data__definition {{ evaluationText }}
 
-      section(v-if='errors.length > 0')
-        h4 入力エラーがありました
-        ul.errors
-          li(v-for='error in errors') {{ error }}
+        section(v-if='errors.length > 0')
+          h4 入力エラーがありました
+          ul.errors
+            li(v-for='error in errors') {{ error }}
+    ul.p-button-group
+      li
+        a.c-button(href='/stocks') キャンセル
+      li
+        button.c-button.c-button--primary(type='submit' @click='submit') 保存する
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import SelectPlace from './components/select-place'
+import SelectVisitedOn from './components/select-visited-on'
+import PlaceEvaluationForm from './components/place-evaluation-form'
 
 export default {
+  components: {
+    SelectPlace,
+    SelectVisitedOn,
+    PlaceEvaluationForm
+  },
+
   computed: {
     ...mapGetters('placeEvaluation', {
       placeName: 'getPlaceName',
@@ -33,14 +51,44 @@ export default {
     }),
 
     ...mapGetters('errors', { errors: 'all' })
+  },
+
+  methods: {
+    ...mapActions('placeEvaluation', { registerEvaluation: 'register' }),
+    ...mapMutations('errors', ['setErrors']),
+
+    submit() {
+      this.registerEvaluation().then(_ => {
+        location.href = '/stocks'
+      }).catch(error => {
+        this.setErrors(error.response.data)
+        window.scrollTo(0, 0)
+      })
+    },
+
+    scrollTo(anchor) {
+      window.location.hash = anchor
+    }
   }
 };
 </script>
 
 <style lang='scss' scoped>
+.new-stock-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 30px;
+}
+
 .a-2-columns {
   display: grid;
   grid-template-columns: 2fr 1fr;
+}
+
+.form-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 30px;
 }
 
 .current-data-section {

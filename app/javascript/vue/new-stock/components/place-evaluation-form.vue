@@ -1,5 +1,5 @@
 <template lang='pug'>
-section
+section.v-place-evaluation-form
   .p-content-header
     h3.p-content-header__title どうだった?
   ul.p-fieldset__list
@@ -22,11 +22,15 @@ export default {
 
     set(evaluation) {
       this.setEvaluation({evaluation})
-      this.$router.push('confirm-screen')
     }
   }
 };
 </script>
 
 <style lang='scss' scoped>
+.v-place-evaluation-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 20px;
+}
 </style>
