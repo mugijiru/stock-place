@@ -2,7 +2,11 @@ module Api
   module V1
     class PlacesController < ApplicationController
       def index
-        @places = VisitedPlace.all
+        @places = if params[:q].blank?
+                    VisitedPlace.all
+                  else
+                    VisitedPlace.where('name LIKE ?', "%#{params[:q]}%")
+                  end
         render json: @places.to_json
       end
 
