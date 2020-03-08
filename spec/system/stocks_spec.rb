@@ -3,29 +3,27 @@ require 'rails_helper'
 RSpec.describe 'Stocks', type: :system, js: true do
   describe '新しいストック' do
     context '新しい場所を利用する場合' do
-      skip '一旦新規登録はできないようにしたため' do
-        it '追加した場所を利用して Stock を投稿できる' do
-          visit '/'
+      it '追加した場所を利用して Stock を投稿できる' do
+        visit '/'
 
-          click_on 'Stock!'
+        click_on 'Stock!'
 
-          click_on '新規登録'
+        click_on '新規登録'
 
-          fill_in '名称', with: 'M78星雲'
-          fill_in '住所', with: '宇宙の彼方'
-          click_on '保存'
+        fill_in '名称', with: 'M78星雲'
+        fill_in '住所', with: '宇宙の彼方'
+        click_on '保存'
 
-          click_on 'M78星雲'
+        click_on 'M78星雲'
 
-          # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
-          fill_in 'place_evaluation_visited_on', with: '002020/01/01'
-          choose 'また行きたい'
+        # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
+        fill_in 'place_evaluation_visited_on', with: '002020/01/01'
+        choose 'また行きたい'
 
-          click_on 'OK'
+        click_on '保存'
 
-          expect(page).to have_text('Stock')
-          expect(page).to have_text('M78星雲')
-        end
+        expect(page).to have_text('Stock')
+        expect(page).to have_text('M78星雲')
       end
     end
 
