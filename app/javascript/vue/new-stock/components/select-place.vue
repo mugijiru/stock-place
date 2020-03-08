@@ -5,7 +5,10 @@ section.v-select-place
     button.c-button(@click='showNewPlaceModal') 新規登録
 
   .p-selectable-places
-    .p-selectable-places__header この中にある?
+    .p-selectable-places__header
+      span この中にある?
+      form.p-selectable-places__search
+        input.p-selectable-places__search-input(placeholder='検索')
     ul.p-selectable-places__list
       li.p-selectable-places__item(v-for='place in sortedPlaces' :key='place.id')
         button.p-selectable-places__select-button(@click='set(place.id)') {{ place.name }}
@@ -56,14 +59,31 @@ export default {
 
 .p-selectable-places {
   &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 40px;
-    padding-left: 10px;
+    padding: 0 10px;
     line-height: 40px;
     color: #fff;
     background-color: #5288bc;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
+  }
+
+  &__search-input {
+    width: 180px;
+    height: 24px;
+    padding: 0 15px;
+    font-size: 14px;
+    color: #111;
+    background-color: #fff;
+    border-radius: 24px;
+
+    &::placeholder {
+      color: #999;
+    }
   }
 
   &__item {
