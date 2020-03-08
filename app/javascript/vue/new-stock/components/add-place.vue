@@ -12,14 +12,13 @@
           input.c-input(name='address' v-model='address')
 
       .p-button-group
-        a.c-button(type='submit' @click.stop.prevent='$router.push({ path: "/select-place" })') キャンセル
+        a.c-button(type='submit' @click.stop.prevent='close') キャンセル
         button.c-button.c-button--primary(type='submit' @click.stop.prevent='save') 保存
 
 </template>
 
 <script>
 import axios from 'libs/axios';
-
 import { mapActions } from 'vuex'
 
 export default {
@@ -31,13 +30,15 @@ export default {
   },
 
   methods: {
-    ...mapActions('places', { fetchPlace: 'fetch' }),
+    close() {
+      this.$modal.pop()
+    },
 
     save() {
       const params = { name: this.name, address: this.address }
       axios.post('/api/v1/places', { place: params }).then(_ => {
-        this.fetchPlace()
-        this.$router.push({ path: '/' })
+        this.$emit('fetch-places')
+        this.close()
       })
     }
   }

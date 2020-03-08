@@ -2,18 +2,27 @@
 section.v-select-place
   .p-content-header
     h3.p-content-header__title 場所はどこ?
+    button.c-button(@click='showNewPlaceModal') 新規登録
 
   .p-selectable-places
     .p-selectable-places__header この中にある?
     ul.p-selectable-places__list
       li.p-selectable-places__item(v-for='place in sortedPlaces' :key='place.id')
         button.p-selectable-places__select-button(@click='set(place.id)') {{ place.name }}
+  modal(name='new-place-modal')
+    add-place( @fetch-places='fetchPlaces()')
 </template>
 
 <script>
 import { mapGetters, mapActions, mapMutations } from 'vuex'
+import 'vue-thin-modal/dist/vue-thin-modal.css'
+import AddPlace from './add-place'
 
 export default {
+  components: {
+    AddPlace
+  },
+
   created() {
     this.fetchPlaces()
   },
@@ -29,6 +38,10 @@ export default {
     set(visitedPlaceId) {
       this.setVisitedPlaceId({visitedPlaceId})
       this.$emit('scroll-next')
+    },
+
+    showNewPlaceModal() {
+      this.$modal.push('new-place-modal')
     }
   }
 };
