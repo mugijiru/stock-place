@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'Stocks', type: :system, js: true do
   describe '新しいストック' do
-    pending '一旦新規登録はできないようにしたため' do
-      context '新しい場所を利用する場合' do
+    context '新しい場所を利用する場合' do
+      skip '一旦新規登録はできないようにしたため' do
         it '追加した場所を利用して Stock を投稿できる' do
           visit '/'
 
@@ -44,7 +44,7 @@ RSpec.describe 'Stocks', type: :system, js: true do
           fill_in 'place_evaluation_visited_on', with: '002020/01/01'
           choose 'また行きたい'
 
-          click_on 'OK'
+          click_on '保存'
 
           expect(page).to have_text('Stock')
           expect(page).to have_text('M78星雲')
