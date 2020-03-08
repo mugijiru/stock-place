@@ -1,10 +1,23 @@
 <template lang='pug'>
-  form.p-search-places
-    input.p-search-places__input(placeholder='検索')
+  form.p-search-places(@submit.prevent='search')
+    input.p-search-places__input(v-model='searchWord' placeholder='検索')
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
+  data() {
+    return { searchWord: '' }
+  },
+
+  methods: {
+    ...mapActions('places', { searchPlaces: 'search' }),
+
+    search() {
+      this.searchPlaces(this.searchWord)
+    }
+  }
 };
 </script>
 
