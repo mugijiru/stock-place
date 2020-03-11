@@ -1,0 +1,11 @@
+json = @places.map do |place|
+  {
+   id: place.id,
+   name: place.name,
+   address: place.address,
+   created_at: place.created_at,
+   updated_at: place.updated_at
+  }
+end
+
+json

@@ -7,7 +7,6 @@ module Api
                   else
                     VisitedPlace.where('name LIKE ?', "%#{params[:q]}%")
                   end
-        render json: @places.to_json
       end
 
       def create
