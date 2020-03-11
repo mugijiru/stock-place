@@ -1,6 +1,6 @@
 <template lang='pug'>
   form.p-search-places(@submit.prevent='search')
-    input.p-search-places__input(v-model='searchWord' placeholder='検索')
+    input#search-places-input.p-search-places__input(v-model='searchWord' placeholder='検索')
 </template>
 
 <script>

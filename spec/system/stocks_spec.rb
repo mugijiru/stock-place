@@ -28,6 +28,20 @@ RSpec.describe 'Stocks', type: :system, js: true do
     end
 
     context '既存の場所を利用する場合' do
+      it '検索で既存の場所を絞り込むことができる' do
+        create(:visited_place, name: '火星')
+        create(:visited_place, name: '天王星')
+
+        visit '/'
+
+        click_on 'Stock!'
+        fill_in 'search-places-input', with: '王'
+        find('#search-places-input').send_keys(:enter)
+
+        expect(page).to have_text('天王星')
+        expect(page).not_to have_text('火星')
+      end
+
       context '入力が正しければ' do
         it 'Stock を投稿できる' do
           create(:visited_place, name: 'M78星雲')
