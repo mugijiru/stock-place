@@ -5,7 +5,9 @@ section.v-select-place
     button.c-button(@click='showNewPlaceModal') 新規登録
 
   .p-selectable-places
-    .p-selectable-places__header この中にある?
+    .p-selectable-places__header
+      span この中にある?
+      SearchPlaces
     ul.p-selectable-places__list
       li.p-selectable-places__item(v-for='place in sortedPlaces' :key='place.id')
         button.p-selectable-places__select-button(@click='set(place.id)') {{ place.name }}
@@ -17,10 +19,12 @@ section.v-select-place
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 import 'vue-thin-modal/dist/vue-thin-modal.css'
 import AddPlace from './add-place'
+import SearchPlaces from './search-places'
 
 export default {
   components: {
-    AddPlace
+    AddPlace,
+    SearchPlaces
   },
 
   created() {
@@ -56,9 +60,12 @@ export default {
 
 .p-selectable-places {
   &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     height: 40px;
-    padding-left: 10px;
+    padding: 0 10px;
     line-height: 40px;
     color: #fff;
     background-color: #5288bc;

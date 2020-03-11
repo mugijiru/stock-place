@@ -14,6 +14,23 @@ RSpec.describe 'Api::V1::PlacesController', type: :request do
         expect(json.size).to eq(5)
       end
     end
+
+    it '検索クエリがある場合その内容で絞り込める' do
+      create(:visited_place, name: '水星')
+      create(:visited_place, name: '火星')
+      create(:visited_place, name: '土星')
+      create(:visited_place, name: '冥王星')
+      create(:visited_place, name: '天王星')
+
+      get '/api/v1/places', params: { q: '王' }
+
+      aggregate_failures do
+        expect(response).to have_http_status(:success)
+
+        json = JSON.parse(response.body)
+        expect(json.size).to eq(2)
+      end
+    end
   end
 
   describe 'POST /api/v1/places' do

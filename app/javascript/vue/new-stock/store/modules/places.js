@@ -14,6 +14,12 @@ const actions = {
     axios.get('/api/v1/places').then(response => {
       commit('setPlaces', { places: response.data })
     })
+  },
+
+  search({ commit }, searchWord) {
+    axios.get('/api/v1/places', { params: { q: searchWord } }).then(response => {
+      commit('setPlaces', { places: response.data })
+    })
   }
 }
 
