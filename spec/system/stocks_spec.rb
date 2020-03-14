@@ -17,7 +17,7 @@ RSpec.describe 'Stocks', type: :system, js: true do
         click_on 'M78星雲'
 
         # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
-        fill_in 'place_evaluation_visited_on', with: '002020/01/01'
+        fill_in 'report_visited_on', with: '002020/01/01'
         choose 'また行きたい'
 
         click_on '保存'
@@ -53,7 +53,7 @@ RSpec.describe 'Stocks', type: :system, js: true do
           click_on 'M78星雲'
 
           # NOTE: Chrome が6桁西暦に対応しているので0埋めで調整
-          fill_in 'place_evaluation_visited_on', with: '002020/01/01'
+          fill_in 'report_visited_on', with: '002020/01/01'
           choose 'また行きたい'
 
           click_on '保存'

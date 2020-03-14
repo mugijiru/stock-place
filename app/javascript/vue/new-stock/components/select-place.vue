@@ -37,7 +37,7 @@ export default {
 
   methods: {
     ...mapActions('places', { fetchPlaces: 'fetch' }),
-    ...mapMutations('placeEvaluation', ['setVisitedPlaceId']),
+    ...mapMutations('report', ['setVisitedPlaceId']),
 
     set(visitedPlaceId) {
       this.setVisitedPlaceId({visitedPlaceId})

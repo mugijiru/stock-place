@@ -6,8 +6,8 @@ section.p-section-card
     .a-2-columns
       section.form-section
         SelectPlace(@scroll-next='scrollTo("select-visited-on")')
-        SelectVisitedOn#select-visited-on(@scroll-next='scrollTo("set-point")')
-        PlaceEvaluationForm#set-point
+        SelectVisitedOn#select-visited-on(@scroll-next='scrollTo("select-evaluation")')
+        SelectEvaluation#select-evaluation
       section.current-data-section
         .p-content-header
           h3.p-content-header__title 入力内容
@@ -34,17 +34,17 @@ section.p-section-card
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import SelectPlace from './components/select-place'
 import SelectVisitedOn from './components/select-visited-on'
-import PlaceEvaluationForm from './components/place-evaluation-form'
+import SelectEvaluation from './components/select-evaluation'
 
 export default {
   components: {
     SelectPlace,
     SelectVisitedOn,
-    PlaceEvaluationForm
+    SelectEvaluation
   },
 
   computed: {
-    ...mapGetters('placeEvaluation', {
+    ...mapGetters('report', {
       placeName: 'getPlaceName',
       visitedOn: 'getVisitedOn',
       evaluationText: 'getEvaluationText'
@@ -54,11 +54,11 @@ export default {
   },
 
   methods: {
-    ...mapActions('placeEvaluation', { registerEvaluation: 'register' }),
+    ...mapActions('report', { registerReport: 'register' }),
     ...mapMutations('errors', ['setErrors']),
 
     submit() {
-      this.registerEvaluation().then(_ => {
+      this.registerReport().then(_ => {
         location.href = '/stocks'
       }).catch(error => {
         this.setErrors(error.response.data)
