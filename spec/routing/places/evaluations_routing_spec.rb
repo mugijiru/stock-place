@@ -5,11 +5,11 @@ RSpec.describe Places::EvaluationsController, type: :routing do
     let(:place) { create(:visited_place) }
 
     it 'routes to #new' do
-      expect(get: "/places/#{place.id}/evaluations/new").to route_to('places/evaluations#new', place_id: place.id.to_s)
+      expect(get: "/visited_places/#{place.id}/evaluations/new").to route_to('places/evaluations#new', visited_place_id: place.id.to_s)
     end
 
     it 'routes to #create' do
-      expect(post: "/places/#{place.id}/evaluations").to route_to('places/evaluations#create', place_id: place.id.to_s)
+      expect(post: "/visited_places/#{place.id}/evaluations").to route_to('places/evaluations#create', visited_place_id: place.id.to_s)
     end
   end
 end
