@@ -11,7 +11,7 @@
           %th.p-table__cell.p-table__cell--header 住所
           %th.p-table__cell.p-table__cell--header
       %tbody.p-table__body
-        - @places.each do |place|
+        - @visited_places.each do |place|
           %tr
             %td.p-table__cell= place.name
             %td.p-table__cell= place.address
