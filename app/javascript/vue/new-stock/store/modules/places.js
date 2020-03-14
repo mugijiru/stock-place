@@ -11,13 +11,13 @@ const getters = {
 
 const actions = {
   fetch({ commit }) {
-    axios.get('/api/v1/places').then(response => {
+    axios.get('/api/v1/visited_places').then(response => {
       commit('setPlaces', { places: response.data })
     })
   },
 
   search({ commit }, searchWord) {
-    axios.get('/api/v1/places', { params: { q: searchWord } }).then(response => {
+    axios.get('/api/v1/visited_places', { params: { q: searchWord } }).then(response => {
       commit('setPlaces', { places: response.data })
     })
   }

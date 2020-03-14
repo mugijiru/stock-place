@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe 'Api::V1::PlacesController', type: :request do
+RSpec.describe 'Api::V1::VisitedPlacesController', type: :request do
   describe 'GET /api/v1/places' do
     it '登録済の場所一覧を取得できる' do
       create_list(:visited_place, 5)
 
-      get '/api/v1/places'
+      get '/api/v1/visited_places'
 
       aggregate_failures do
         expect(response).to have_http_status(:success)
@@ -22,7 +22,7 @@ RSpec.describe 'Api::V1::PlacesController', type: :request do
       create(:visited_place, name: '冥王星')
       create(:visited_place, name: '天王星')
 
-      get '/api/v1/places', params: { q: '王' }
+      get '/api/v1/visited_places', params: { q: '王' }
 
       aggregate_failures do
         expect(response).to have_http_status(:success)
@@ -33,10 +33,10 @@ RSpec.describe 'Api::V1::PlacesController', type: :request do
     end
   end
 
-  describe 'POST /api/v1/places' do
+  describe 'POST /api/v1/visited_places' do
     context 'パラメータが正しければ' do
       it '場所を新規登録できる' do
-        post '/api/v1/places', params: { place: { name: 'M78星雲', address: '宇宙の彼方' } }
+        post '/api/v1/visited_places', params: { place: { name: 'M78星雲', address: '宇宙の彼方' } }
 
         aggregate_failures do
           expect(response).to have_http_status(:created)
@@ -49,7 +49,7 @@ RSpec.describe 'Api::V1::PlacesController', type: :request do
 
     context 'パラメータが誤っていれば' do
       it '場所の登録に失敗' do
-        post '/api/v1/places', params: { place: { name: '', address: '宇宙の彼方' } }
+        post '/api/v1/visited_places', params: { place: { name: '', address: '宇宙の彼方' } }
 
         aggregate_failures do
           expect(response).to have_http_status(:unprocessable_entity)
