@@ -16,6 +16,9 @@
 #                                 place GET    /places/:id(.:format)                                                                    places#show
 #                                       PATCH  /places/:id(.:format)                                                                    places#update
 #                                       PUT    /places/:id(.:format)                                                                    places#update
+#                         api_v1_places GET    /api/v1/places(.:format)                                                                 api/v1/places#index
+#                                       POST   /api/v1/places(.:format)                                                                 api/v1/places#create
+#              api_v1_place_evaluations POST   /api/v1/place_evaluations(.:format)                                                      api/v1/place_evaluations#create
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -44,7 +47,7 @@ Rails.application.routes.draw do
     resources :evaluations, only: %i[new create edit update destroy], controller: 'places/evaluations'
   end
 
-  namespace :api do
+  namespace :api, { defaults: { format: :json } } do
     namespace :v1 do
       resources :places, only: %i[index create]
       resources :place_evaluations, only: %i[create]

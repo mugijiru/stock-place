@@ -7,16 +7,15 @@ module Api
                   else
                     VisitedPlace.where('name LIKE ?', "%#{params[:q]}%")
                   end
-        render json: @places.to_json
       end
 
       def create
         @place = VisitedPlace.new(place_params)
 
         @place.save!
-        render json: @place, status: :created
+        render :show, status: :created, location: place_url(@place)
       rescue ActiveRecord::RecordInvalid
-        render json: { place: @place, errors: @place.errors.full_messages }, status: :unprocessable_entity
+        render json: { errors: @place.errors.full_messages }, status: :unprocessable_entity
       end
 
       private
