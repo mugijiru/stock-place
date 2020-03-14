@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Places", type: :system do
+RSpec.describe "VisitedPlaces", type: :system do
   before do
     driven_by(:rack_test)
   end
@@ -9,7 +9,7 @@ RSpec.describe "Places", type: :system do
     context '入力が正しければ' do
       it '場所情報が更新できる' do
         place = create(:visited_place, name: 'old_name', address: 'old_address')
-        visit "/places/#{place.id}"
+        visit "/visited_places/#{place.id}"
         click_on('編集')
         fill_in('名称', with: 'new_name')
         fill_in('住所', with: 'new_address')

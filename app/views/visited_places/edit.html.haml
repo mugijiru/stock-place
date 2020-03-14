@@ -2,7 +2,7 @@
   .p-section-card__header.p-content-header
     %h2.p-content-header__title #{@place.name} の情報修正
 
-  = form_with model: @place, url: place_path(@place), local: true, class: 'p-form p-section-card__content' do |f|
+  = form_with model: @place, url: visited_place_path(@place), local: true, class: 'p-form p-section-card__content' do |f|
     %section.p-form-section.p-form-section--2-columns
       %h3.p-form-section__title 場所
       %p.p-form-section__input-group
