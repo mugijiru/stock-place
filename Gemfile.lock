@@ -128,6 +128,7 @@ GEM
       multi_json
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
+    json (2.3.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -247,10 +248,11 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    simplecov (0.18.5)
+    simplecov (0.17.1)
       docile (~> 1.1)
-      simplecov-html (~> 0.11)
-    simplecov-html (0.12.2)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     solargraph (0.38.5)
       backport (~> 1.1)
       benchmark
@@ -338,7 +340,7 @@ DEPENDENCIES
   rspec-rails (~> 3.9)
   sass-rails (>= 6)
   selenium-webdriver
-  simplecov
+  simplecov (~> 0.17.1)
   solargraph
   spring
   spring-commands-rspec
