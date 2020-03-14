@@ -1,6 +1,6 @@
 class Api::V1::VisitedPlaceReportsController < ApplicationController
   def create
-    @place_report = VisitedPlaceReport.new(place_evaluation_params)
+    @place_report = VisitedPlaceReport.new(visited_place_report_params)
 
     if @place_report.save
       render :show, status: :created
@@ -11,7 +11,7 @@ class Api::V1::VisitedPlaceReportsController < ApplicationController
 
   private
 
-  def place_evaluation_params
-    params.require(:place_evaluation).permit(:visited_place_id, :visited_on, :evaluation)
+  def visited_place_report_params
+    params.require(:visited_place_report).permit(:visited_place_id, :visited_on, :evaluation)
   end
 end
