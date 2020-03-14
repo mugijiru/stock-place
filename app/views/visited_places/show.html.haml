@@ -18,17 +18,17 @@
       = link_to '訪問記録を追加', new_visited_place_report_path(@place), class: 'p-place-show__section-button c-button'
 
     .p-section-card__content.p-place-show__evaluation-list
-      - @place_evaluations.each do |evaluation|
+      - @reports.each do |report|
         %section.p-place-show__evaluation
           %dl.p-definition-list
             %dt.p-definition-list__title 訪問日
-            %dd= l(evaluation.visited_on)
+            %dd= l(report.visited_on)
             %dt.p-definition-list__title リピートあり?
-            %dd= evaluation.evaluation_text
+            %dd= report.evaluation_text
 
           %ul.p-button-group
-            %li= link_to '修正する', edit_visited_place_report_path(@place, evaluation), class: 'c-button'
-            %li= link_to '削除する', visited_place_report_path(@place, evaluation), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'c-button c-button--danger'
+            %li= link_to '修正する', edit_visited_place_report_path(@place, report), class: 'c-button'
+            %li= link_to '削除する', visited_place_report_path(@place, report), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'c-button c-button--danger'
 
 
   %ul.p-button-group

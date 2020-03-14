@@ -36,7 +36,7 @@ export default {
 
     save() {
       const params = { name: this.name, address: this.address }
-      axios.post('/api/v1/visited_places', { place: params }).then(_ => {
+      axios.post('/api/v1/visited_places', { visited_place: params }).then(_ => {
         this.$emit('fetch-places')
         this.close()
       })

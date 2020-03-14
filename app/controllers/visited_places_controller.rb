@@ -1,7 +1,7 @@
 class VisitedPlacesController < ApplicationController
   def show
     @place = VisitedPlace.find(params[:id])
-    @place_evaluations = @place.reports.order(visited_on: :desc)
+    @reports = @place.reports.order(visited_on: :desc)
   end
 
   def edit

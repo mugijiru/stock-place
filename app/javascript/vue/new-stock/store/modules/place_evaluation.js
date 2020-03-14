@@ -28,7 +28,7 @@ const actions = {
   register({state}) {
     return new Promise((resolve, reject) => {
       axios.post('/api/v1/visited_place_reports',
-                 { place_evaluation: { visited_place_id: state.visitedPlaceId, visited_on: state.visitedOn, evaluation: state.evaluation }}).
+                 { visited_place_report: { visited_place_id: state.visitedPlaceId, visited_on: state.visitedOn, evaluation: state.evaluation }}).
         then(response => resolve(response.data)).
         catch(error => reject(error))
     })
