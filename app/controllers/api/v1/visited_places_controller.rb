@@ -13,7 +13,7 @@ module Api
         @place = VisitedPlace.new(place_params)
 
         @place.save!
-        render :show, status: :created, location: place_url(@place)
+        render :show, status: :created, location: visited_place_url(@place)
       rescue ActiveRecord::RecordInvalid
         render json: { errors: @place.errors.full_messages }, status: :unprocessable_entity
       end

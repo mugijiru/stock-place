@@ -18,7 +18,7 @@ class StocksController < ApplicationController
     @place_evaluation = @place.reports.build(place_evaluation_params)
 
     if @place.save
-      redirect_to place_path(@place), notice: 'VisitedPlace was successfully created.'
+      redirect_to visited_place_path(@place), notice: 'VisitedPlace was successfully created.'
     else
       render :new
     end
