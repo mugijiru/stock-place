@@ -1,4 +1,4 @@
-class Api::V1::PlaceEvaluationsController < ApplicationController
+class Api::V1::VisitedPlaceReportsController < ApplicationController
   def create
     @place_report = VisitedPlaceReport.new(place_evaluation_params)
 

@@ -1,6 +1,6 @@
 module Api
   module V1
-    class PlacesController < ApplicationController
+    class VisitedPlacesController < ApplicationController
       def index
         @places = if params[:q].blank?
                     VisitedPlace.all
