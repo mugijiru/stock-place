@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe 'Places::Evaluations', type: :request do
-  describe 'POST /places/:id/evaluations' do
+RSpec.describe 'VisitedPlaces::Reports', type: :request do
+  describe 'POST /visited_places/:id/reports' do
     context '正しいリクエストの場合' do
       it '新規評価が登録できる' do
         place = create(:visited_place, name: 'test_place')
-        post "/places/#{place.id}/evaluations", params: { visited_place_report: { visited_on: Date.today, evaluation: :good } }
+        post "/visited_places/#{place.id}/reports", params: { visited_place_report: { visited_on: Date.today, evaluation: :good } }
         aggregate_failures do
           expect(response).to have_http_status(:found)
           follow_redirect!
@@ -19,7 +19,7 @@ RSpec.describe 'Places::Evaluations', type: :request do
     context '誤ったリクエストの場合' do
       it '新規評価が登録に失敗する' do
         place = create(:visited_place, name: 'test_place')
-        post "/places/#{place.id}/evaluations", params: { visited_place_report: { visited_on: Date.today, evaluation: -1000 } }
+        post "/visited_places/#{place.id}/reports", params: { visited_place_report: { visited_on: Date.today, evaluation: -1000 } }
         aggregate_failures do
           expect(response).to have_http_status(:ok)
           expect(response.body).to include('test_place')
@@ -30,12 +30,12 @@ RSpec.describe 'Places::Evaluations', type: :request do
     end
   end
 
-  describe 'PUT /places/:place_id/evaluations/:id' do
+  describe 'PUT /visited_places/:visited_place_id/reports/:id' do
     context '正しいリクエストの場合' do
       it '評価を修正できる' do
         place = create(:visited_place, name: 'test_place')
-        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, evaluation: :no_good)
-        put "/places/#{place.id}/evaluations/#{evaluation.id}", params: { visited_place_report: { visited_on: Date.today, evaluation: :good } }
+        report = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, evaluation: :no_good)
+        put "/visited_places/#{place.id}/reports/#{report.id}", params: { visited_place_report: { visited_on: Date.today, evaluation: :good } }
         aggregate_failures do
           expect(response).to have_http_status(:found)
           follow_redirect!
@@ -49,8 +49,8 @@ RSpec.describe 'Places::Evaluations', type: :request do
     context '誤ったリクエストの場合' do
       it '評価を修正できない' do
         place = create(:visited_place, name: 'test_place')
-        evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, evaluation: :no_good)
-        put "/places/#{place.id}/evaluations/#{evaluation.id}", params: { visited_place_report: { visited_on: Date.today, evaluation: 2000 } }
+        report = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, evaluation: :no_good)
+        put "/visited_places/#{place.id}/reports/#{report.id}", params: { visited_place_report: { visited_on: Date.today, evaluation: 2000 } }
         aggregate_failures do
           expect(response).to have_http_status(:ok)
           expect(response.body).to include('test_place')

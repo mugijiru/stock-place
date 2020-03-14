@@ -1,6 +1,0 @@
-%section.p-section-card
-  .p-section-card__header.p-content-header
-    %h2.p-content-header__title #{@place.name} の訪問記録を追加
-
-  = form_with model: @evaluation, url: place_evaluations_path(@place.id), local: true, class: 'p-form p-section-card__content' do |f|
-    = render 'places/evaluations/form_contents', f: f, place: @place, evaluation: @evaluation

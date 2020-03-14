@@ -1,4 +1,4 @@
-class PlacesController < ApplicationController
+class VisitedPlacesController < ApplicationController
   def show
     @place = VisitedPlace.find(params[:id])
     @place_evaluations = @place.reports.order(visited_on: :desc)
@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
     @place = VisitedPlace.find(params[:id])
 
     if @place.update(visited_place_params)
-      redirect_to place_path(@place), notice: "#{I18n.t('activerecord.models.visited_place')}の更新しました"
+      redirect_to visited_place_path(@place), notice: "#{I18n.t('activerecord.models.visited_place')}の更新しました"
     else
       render :edit
     end

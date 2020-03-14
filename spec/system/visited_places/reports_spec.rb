@@ -1,11 +1,11 @@
 require "rails_helper"
 
-RSpec.describe "Places::Evaluations", type: :system do
+RSpec.describe "VisitedPlaces::Reports", type: :system do
   describe '評価の登録' do
     context '入力が正しければ' do
       it '評価を登録できる' do
         place = create(:visited_place, name: 'test_place')
-        visit "/places/#{place.id}"
+        visit "/visited_places/#{place.id}"
         click_on('訪問記録を追加')
         fill_in '訪問日', with: '2020/01/01'
         choose 'また行きたい'
@@ -23,7 +23,7 @@ RSpec.describe "Places::Evaluations", type: :system do
       it '評価を修正できる' do
         place = create(:visited_place, name: 'test_place')
         evaluation = create(:visited_place_report, visited_place: place, visited_on: Date.yesterday, evaluation: :no_good)
-        visit "/places/#{place.id}"
+        visit "/visited_places/#{place.id}"
 
         within('.p-place-show__evaluation:first-of-type') do
           click_on('修正する')
@@ -46,7 +46,7 @@ RSpec.describe "Places::Evaluations", type: :system do
       it '評価を削除できる', js: true do
         place = create(:visited_place, name: 'test_place')
         evaluation = create(:visited_place_report, visited_place: place, visited_on: '2020/01/01', evaluation: :good)
-        visit "/places/#{place.id}"
+        visit "/visited_places/#{place.id}"
 
         within('.p-place-show__evaluation:first-of-type') do
           accept_confirm('本当に削除しますか?') do
