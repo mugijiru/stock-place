@@ -58,7 +58,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
-  gem 'simplecov', require: false
+  gem 'simplecov', '~> 0.17.1', require: false
   gem 'coveralls', require: false
 end
 
