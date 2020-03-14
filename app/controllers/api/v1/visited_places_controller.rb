@@ -10,7 +10,7 @@ module Api
       end
 
       def create
-        @place = VisitedPlace.new(place_params)
+        @place = VisitedPlace.new(visited_place_params)
 
         @place.save!
         render :show, status: :created, location: visited_place_url(@place)
@@ -20,8 +20,8 @@ module Api
 
       private
 
-      def place_params
-        params.require(:place).permit(:name, :address)
+      def visited_place_params
+        params.require(:visited_place).permit(:name, :address)
       end
     end
   end
