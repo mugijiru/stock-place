@@ -55,6 +55,7 @@ group :development do
   gem 'bullet'
   gem 'brakeman'
   gem 'annotate'
+  gem 'dotenv-rails'
 end
 
 group :test do
