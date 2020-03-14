@@ -3,7 +3,7 @@ section.v-select-visited-on
   .p-content-header
     h3.p-content-header__title いついった?
 
-  input#place_evaluation_visited_on.c-input(type='date' :max='today' @change='set($event)')
+  input#report_visited_on.c-input(type='date' :max='today' @change='set($event)')
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
   },
 
   methods: {
-    ...mapMutations('placeEvaluation', ['setVisitedOn']),
+    ...mapMutations('report', ['setVisitedOn']),
 
     set(event) {
       this.setVisitedOn({visitedOn: event.target.value})

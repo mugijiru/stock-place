@@ -1,5 +1,5 @@
 <template lang='pug'>
-section.v-place-evaluation-form
+section.v-select-evaluation
   .p-content-header
     h3.p-content-header__title どうだった?
   ul.p-fieldset__list
@@ -14,11 +14,11 @@ import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters('placeEvaluation', ['evaluationOptions'])
+    ...mapGetters('report', ['evaluationOptions'])
   },
 
   methods: {
-    ...mapMutations('placeEvaluation', ['setEvaluation']),
+    ...mapMutations('report', ['setEvaluation']),
 
     set(evaluation) {
       this.setEvaluation({evaluation})
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-.v-place-evaluation-form {
+.v-select-evaluation {
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 20px;
