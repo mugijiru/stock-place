@@ -1,0 +1,9 @@
+json = {
+        id: @place_report.id,
+        visited_on: @place_report.visited_on,
+        evaluation: @place_report.evaluation_text,
+        created_at: @place_report.created_at,
+        updated_at: @place_report.updated_at
+}
+
+json

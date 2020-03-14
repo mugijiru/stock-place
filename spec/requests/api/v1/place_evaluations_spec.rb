@@ -12,7 +12,7 @@ RSpec.describe 'Api::V1::PlaceEvaluationsController', type: :request do
           expect(response).to have_http_status(:created)
 
           json = JSON.parse(response.body)
-          expect(json['evaluation']).to eq('good')
+          expect(json['evaluation']).to eq('また行きたい')
         end
       end
     end
