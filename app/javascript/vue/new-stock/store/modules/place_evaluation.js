@@ -27,7 +27,7 @@ const getters = {
 const actions = {
   register({state}) {
     return new Promise((resolve, reject) => {
-      axios.post('/api/v1/place_evaluations',
+      axios.post('/api/v1/visited_place_reports',
                  { place_evaluation: { visited_place_id: state.visitedPlaceId, visited_on: state.visitedOn, evaluation: state.evaluation }}).
         then(response => resolve(response.data)).
         catch(error => reject(error))

@@ -50,7 +50,7 @@ Rails.application.routes.draw do
   namespace :api, { defaults: { format: :json } } do
     namespace :v1 do
       resources :visited_places, only: %i[index create]
-      resources :place_evaluations, only: %i[create]
+      resources :visited_place_reports, only: %i[create]
     end
   end
 end
