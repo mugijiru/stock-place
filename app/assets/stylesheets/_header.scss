@@ -5,10 +5,10 @@
   position: fixed;
   display: grid;
   grid-template:
-    "  .     .   .    .   .    .    .  " 5px
-    "  .   name  .   nav  .   btn   .  " auto
-    "  .     .   .    .   .    .    .  " 5px
-    / 20px auto 1fr auto 20px auto 20px;
+    "  .     .   .    .    .     .    .     .     . " 5px
+    "  .   name  .   nav   .   stock  .   logout  . " auto
+    "  .     .   .    .    .     .    .     .     . " 5px
+    / 20px auto 1fr auto 20px   auto 10px  auto 20px;
   align-items: center;
   min-width: 100vw;
   background-color: $color-primary-4;
@@ -25,6 +25,10 @@
   }
 
   &__new-stock {
-    grid-area: btn;
+    grid-area: stock;
+  }
+
+  &__logout {
+    grid-area: logout;
   }
 }

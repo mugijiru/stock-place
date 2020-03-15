@@ -42,7 +42,8 @@
 Rails.application.routes.draw do
   root 'sessions#new'
 
-  get 'sessions/new'
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
   get 'auth/auth0/callback' => 'auth0#callback'
   get 'auth/failure' => 'auth0#failure'
 
