@@ -46,6 +46,7 @@ Rails.application.routes.draw do
   get 'auth/auth0/callback' => 'auth0#callback'
   get 'auth/failure' => 'auth0#failure'
 
+  get 'home' => 'home#index'
   resources :stocks, only: %i[index new create destroy]
   resources :visited_places, only: %i[show edit update] do
     resources :reports, only: %i[new create edit update destroy], controller: 'visited_places/reports'
