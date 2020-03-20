@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe 'Api::V1::VisitedPlaceReportssController', type: :request do
+  before { signin_as_user }
+
   describe 'POST /api/v1/visited_place_reports' do
     context '入力内容が正しい場合' do
       it '場所と評価を保存できる' do
