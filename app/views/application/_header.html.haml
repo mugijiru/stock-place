@@ -1,7 +1,8 @@
 %header.header{ class: class_name }
   %h1.header__application-name= link_to 'StockPlace', root_path, class: 'c-text-link--no-decorate'
-  %nav.header__nav
-    %ul.header__nav-list
-      %li.header__nav-item= link_to 'Stocks', stocks_path, class: 'c-text-link--light c-text-link--no-decorate'
-  = link_to 'Stock!', new_stock_path, class: 'c-button header__new-stock'
-  = link_to 'ログアウト', logout_path, class: 'c-button c-button--danger header__logout', method: :delete
+  - if logged_in?
+    %nav.header__nav
+      %ul.header__nav-list
+        %li.header__nav-item= link_to 'Stocks', stocks_path, class: 'c-text-link--light c-text-link--no-decorate'
+    = link_to 'Stock!', new_stock_path, class: 'c-button header__new-stock'
+    = link_to 'ログアウト', logout_path, class: 'c-button c-button--danger header__logout', method: :delete
