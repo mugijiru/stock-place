@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe 'Home', type: :system do
+  before { log_in }
+
   it '「また行きたい」「たまになら」という評価の場所一覧が表示される' do
     visited_place = create(:visited_place, name: 'サイコーな場所')
     create(:visited_place_report, visited_place: visited_place, evaluation: :good)
