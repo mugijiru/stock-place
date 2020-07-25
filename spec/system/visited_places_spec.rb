@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe "VisitedPlaces", type: :system do
   before do
     driven_by(:rack_test)
+    signin_as_user
   end
 
   describe '場所情報の更新' do

@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe 'VisitedPlaces::Reports', type: :request do
+  before { signin_as_user }
+
   describe 'POST /visited_places/:id/reports' do
     context '正しいリクエストの場合' do
       it '新規評価が登録できる' do

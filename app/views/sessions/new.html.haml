@@ -1,0 +1,6 @@
+%section.p-login-section
+  %section.p-section-card
+    .p-section-card__header.p-content-header
+      %h2.p-section-header__title ログイン
+    .p-section-card__content
+      = button_to 'Login', '/auth/auth0', method: :post, class: 'c-button'

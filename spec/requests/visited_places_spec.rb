@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe 'VisitedPlaces', type: :request do
+  before { signin_as_user }
+
   describe 'GET /visited_places/:id' do
     it '場所情報と評価一覧が表示される' do
       place = create(:visited_place, name: 'for places test')

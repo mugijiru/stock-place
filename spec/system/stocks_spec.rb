@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Stocks', type: :system, js: true do
+  before { signin_as_user }
+
   describe '新しいストック' do
     context '新しい場所を利用する場合' do
       it '追加した場所を利用して Stock を投稿できる' do

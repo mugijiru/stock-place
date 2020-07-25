@@ -1,6 +1,8 @@
 require "rails_helper"
 
 RSpec.describe 'Api::V1::VisitedPlacesController', type: :request do
+  before { signin_as_user }
+
   describe 'GET /api/v1/places' do
     it '登録済の場所一覧を取得できる' do
       create_list(:visited_place, 5)

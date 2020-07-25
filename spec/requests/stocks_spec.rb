@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Stocks', type: :request do
+  before { signin_as_user }
+
   describe 'GET /stocks' do
     it 'ストックした場所一覧を取得できる' do
       params = visited_place_params.merge(name: 'おいしいラーメン屋')

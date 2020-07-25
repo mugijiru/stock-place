@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Header', type: :system do
+  before { signin_as_user }
+
   it 'Stock 追加画面に遷移できる', js: true do
     visit '/'
     click_on 'Stock!'
