@@ -9,7 +9,7 @@ RSpec.describe 'Home', type: :system do
     visited_place2 = create(:visited_place, name: 'まあまあな場所')
     create(:visited_place_report, visited_place: visited_place2, evaluation: :not_bad)
 
-    visit '/'
+    visit '/home'
 
     aggregate_failures do
       within('.p-home-section--2-columns .p-section-card:first-child') do
