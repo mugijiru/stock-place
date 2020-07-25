@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Header', type: :system do
-  before { log_in }
+  before { signin_as_user }
 
   it 'Stock 追加画面に遷移できる', js: true do
     visit '/'

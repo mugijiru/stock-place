@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Stocks', type: :system, js: true do
-  before { log_in }
+  before { signin_as_user }
 
   describe '新しいストック' do
     context '新しい場所を利用する場合' do

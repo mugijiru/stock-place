@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "VisitedPlaces::Reports", type: :system do
-  before { log_in }
+  before { signin_as_user }
 
   describe '評価の登録' do
     context '入力が正しければ' do

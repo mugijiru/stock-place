@@ -1,6 +1,6 @@
 module System
   module SessionHelpers
-    def log_in(invalid = false)
+    def signin_as_user(invalid = false)
       invalid ? mock_invalid_auth_hash : mock_valid_auth_hash
       Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:auth0]
       visit '/auth/auth0/callback?code=vihipkGaumc5IVgs'
