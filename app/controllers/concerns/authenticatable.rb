@@ -6,6 +6,10 @@ module Authenticatable
   end
 
   def logged_in_using_omniauth?
-    redirect_to '/' unless session[:userinfo].present?
+    redirect_to '/' unless logged_in?
+  end
+
+  def logged_in?
+    session[:userinfo].present?
   end
 end
